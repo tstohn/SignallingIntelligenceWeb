@@ -25,8 +25,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .nav-r a:hover{color:var(--white)}
 .nav-btn{font-family:var(--mono);font-size:12px;color:var(--green);border:1px solid rgba(61,255,160,.3);padding:.4rem 1rem;border-radius:4px;text-decoration:none;letter-spacing:.04em;transition:background .2s}
 .nav-btn:hover{background:rgba(61,255,160,.08)}
-#hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:80px 2rem 3rem;text-align:center}
-.hero-text{max-width:760px;margin:0 auto 3rem}
+#hero{min-height:auto;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:92px 2rem 1.2rem;text-align:center}
+.hero-text{max-width:760px;margin:0 auto 2rem}
 .pill{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--mono);font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--green);background:rgba(61,255,160,.07);border:1px solid rgba(61,255,160,.2);padding:.3rem .9rem;border-radius:20px;margin-bottom:1.6rem}
 .pill::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--green);animation:blink 2s infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
@@ -38,14 +38,19 @@ h1 b{font-weight:500;color:var(--green)}
 .cta-p:hover{opacity:.85}
 .cta-g{font-family:var(--mono);font-size:13px;color:var(--faint);border:1px solid rgba(255,255,255,.15);padding:.72rem 1.4rem;border-radius:4px;text-decoration:none;transition:color .2s,border-color .2s;letter-spacing:.04em}
 .cta-g:hover{color:var(--white);border-color:rgba(255,255,255,.35)}
-#umapWrap{width:100%;max-width:860px;margin:0 auto}
-#umapCanvas{width:100%;height:400px;display:block}
-.umap-labels{display:flex;justify-content:center;gap:3rem;margin-top:.7rem}
-.umap-label{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;display:flex;align-items:center;gap:.45rem}
+#flowWrap{width:100%;max-width:900px;margin:1.4rem auto 0;scroll-margin-top:80px}
+#flowCanvas{width:100%;height:460px;display:block}
+.umap-labels{display:flex;justify-content:center;gap:1rem;margin-top:1rem;flex-wrap:wrap}
+.pop-card{display:flex;align-items:center;gap:.65rem;padding:.55rem 1.05rem;border-radius:8px;background:var(--bg2);border:1px solid rgba(255,255,255,.07)}
+.pop-card.g{border-color:rgba(61,255,160,.3)}
+.pop-card.b{border-color:rgba(91,156,246,.3)}
+.pop-card .pc-name{font-family:var(--mono);font-size:12.5px;letter-spacing:.05em;line-height:1.2}
+.pop-card.g .pc-name{color:var(--green)}
+.pop-card.b .pc-name{color:var(--blue)}
+.pop-card .pc-sub{font-size:11px;color:var(--faint);line-height:1.2;margin-top:2px}
+.umap-bridge{text-align:center;font-family:var(--mono);font-size:11px;color:var(--faint);letter-spacing:.03em;margin-top:1.1rem}
 .dot-g{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 7px var(--green)}
 .dot-b{width:8px;height:8px;border-radius:50%;background:var(--blue);box-shadow:0 0 7px var(--blue)}
-.umap-label.g{color:var(--green)}.umap-label.b{color:var(--blue)}
-#pathway{padding:6rem 2rem;background:var(--bg2)}
 .section-header{text-align:center;margin-bottom:1.5rem}
 .sec-eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--green);opacity:.75;margin-bottom:.7rem}
 h2{font-size:clamp(1.6rem,3vw,2.4rem);font-weight:300;letter-spacing:-.025em;color:var(--white)}
@@ -57,7 +62,6 @@ h2 b{font-weight:500}
 .pl-b{width:24px;height:2px;background:var(--blue);border-radius:2px;box-shadow:0 0 5px var(--blue)}
 .pl-p{width:24px;height:2px;background:var(--purple);border-radius:2px;box-shadow:0 0 5px var(--purple)}
 .pl-d{width:24px;height:2px;background:rgba(255,255,255,.15);border-radius:2px}
-#pathwayCanvas{display:block;margin:0 auto;max-width:860px;width:100%;height:520px}
 #features{padding:6rem 2rem;background:var(--bg)}
 .feat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;border:1px solid rgba(255,255,255,.06);background:rgba(255,255,255,.06);max-width:1100px;margin:0 auto}
 .feat{background:var(--bg);padding:2rem;transition:background .2s}
@@ -94,7 +98,7 @@ footer{border-top:1px solid rgba(255,255,255,.06);padding:1.5rem 2.5rem;display:
     <span class="logo-text">Signalling<em>Intelligence</em></span>
   </a>
   <div class="nav-r">
-    <a href="#pathway">Platform</a>
+    <a href="#flowWrap">Platform</a>
     <a href="#features">Methods</a>
     <a href="#why">Why us</a>
     <a href="#contact" class="nav-btn">Get in touch</a>
@@ -108,31 +112,17 @@ footer{border-top:1px solid rgba(255,255,255,.06);padding:1.5rem 2.5rem;display:
     <p class="sub">We extract, map, and interpret intracellular signalling programs from single-cell protein data &mdash; turning Phospho-seq, SIGNAL-seq, and 4i readouts into actionable pathway biology for drug discovery.</p>
     <div class="ctas">
       <a href="#contact" class="cta-p">Request a demo</a>
-      <a href="#pathway" class="cta-g">See the platform &rarr;</a>
+      <a href="#flowWrap" class="cta-g">See the platform &rarr;</a>
     </div>
   </div>
-  <div id="umapWrap">
-    <canvas id="umapCanvas"></canvas>
-    <div class="umap-labels">
-      <div class="umap-label g"><div class="dot-g"></div>Cluster A &middot; MAPK active</div>
-      <div class="umap-label b"><div class="dot-b"></div>Cluster B &middot; PI3K active</div>
+  <div id="flowWrap">
+    <canvas id="flowCanvas"></canvas>
+    <div class="pathway-legend" style="margin-top:.7rem;margin-bottom:0">
+      <div class="pleg"><div class="pl-g"></div><span style="color:var(--green)">Cluster A &mdash; MAPK / ERK branch</span></div>
+      <div class="pleg"><div class="pl-b"></div><span style="color:var(--blue)">Cluster B &mdash; PI3K / AKT branch</span></div>
+      <div class="pleg"><div class="pl-p"></div><span style="color:var(--purple)">Crosstalk between branches</span></div>
     </div>
   </div>
-</section>
-
-<section id="pathway">
-  <div class="section-header">
-    <div class="sec-eyebrow">Signalling network analysis</div>
-    <h2>Signal flows through <b>different branches</b> in each population</h2>
-    <p class="sec-sub">LoCo resolves context-dependent co-variation &mdash; the same EGFR pathway rewires completely between cell states, invisible to global correlation analyses.</p>
-  </div>
-  <div class="pathway-legend">
-    <div class="pleg"><div class="pl-g"></div><span style="color:var(--green)">Cluster A &mdash; MAPK branch</span></div>
-    <div class="pleg"><div class="pl-b"></div><span style="color:var(--blue)">Cluster B &mdash; PI3K branch</span></div>
-    <div class="pleg"><div class="pl-p"></div><span style="color:var(--purple)">Crosstalk</span></div>
-    <div class="pleg"><div class="pl-d"></div>Inactive</div>
-  </div>
-  <canvas id="pathwayCanvas"></canvas>
 </section>
 
 <section id="features">
@@ -179,141 +169,53 @@ footer{border-top:1px solid rgba(255,255,255,.06);padding:1.5rem 2.5rem;display:
 
 <script>
 const DPR = window.devicePixelRatio || 1;
-
-// ═══════════════════════════════════════════════
-// UMAP: swirling cells → 2 organic clusters
-// ═══════════════════════════════════════════════
-const uc = document.getElementById('umapCanvas');
-const ux = uc.getContext('2d');
+const CV = document.getElementById('flowCanvas');
+const cx = CV.getContext('2d');
+const CH = 460;                       // canvas CSS height
 function rsz() {
-  const r = uc.parentElement.getBoundingClientRect();
-  uc.width = r.width * DPR; uc.height = 400 * DPR;
-  uc.style.width = r.width + 'px'; uc.style.height = '400px';
+  const r = CV.parentElement.getBoundingClientRect();
+  const w = Math.min(r.width, 900);
+  CV.width = w * DPR; CV.height = CH * DPR;
+  CV.style.width = w + 'px'; CV.style.height = CH + 'px';
 }
 rsz(); window.addEventListener('resize', rsz);
-function UW() { return uc.width / DPR; }
-function UH() { return uc.height / DPR; }
+function W() { return CV.width / DPR; }
+function H() { return CV.height / DPR; }
+function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
+function ease(t) { return t < .5 ? 2*t*t : -1+(4-2*t)*t; }
 
+// ═══════════════════════════════════════════════
+// Cell particles: whirlpool → 2 clusters → recede to header badges
+// ═══════════════════════════════════════════════
 const N = 240;
 const pts = [];
-// Two UMAP cluster targets — slightly offset kidney shapes
-const TCTR = [{cx:0.30,cy:0.50},{cx:0.70,cy:0.50}];
-
+const CLUSTER = [{x:0.34,y:0.46},{x:0.66,y:0.46}];    // prominent clustering blobs
+const BADGE   = [{x:0.145,y:0.11},{x:0.855,y:0.11}];  // compact header badges (top corners)
 for (let i = 0; i < N; i++) {
-  const cl = i < N * 0.45 ? 0 : 1;
-  const ba = Math.random() * Math.PI * 2;
-  // Organic radius with sqrt for denser core
-  const br = Math.pow(Math.random(), 0.45) * (cl === 0 ? 0.135 : 0.15);
-  const skewX = cl === 0 ? 1.0 : 1.15, skewY = cl === 0 ? 0.85 : 0.75;
-  const ang = Math.random() * Math.PI * 2;
-  const rr = 0.06 + Math.random() * 0.34;
+  const cl = i < N * 0.46 ? 0 : 1;
+  const oa = Math.random() * Math.PI * 2;
+  const orr = Math.pow(Math.random(), 0.45);
+  const skewX = cl === 0 ? 1.0 : 1.12, skewY = cl === 0 ? 0.9 : 0.8;
+  const a2 = Math.random() * Math.PI * 2, r2 = 0.05 + Math.random() * 0.33;
   pts.push({
-    sx: 0.5 + Math.cos(ang) * rr, sy: 0.5 + Math.sin(ang) * rr * 0.68,
-    tx: TCTR[cl].cx + Math.cos(ba) * br * skewX,
-    ty: TCTR[cl].cy + Math.sin(ba) * br * skewY,
-    x: 0, y: 0, cl,
-    r: 1.8 + Math.random() * 3.2,
-    op: 0.4 + Math.random() * 0.55,
+    cl, oa, orr,
+    sx: 0.5 + Math.cos(a2) * r2, sy: 0.46 + Math.sin(a2) * r2 * 0.6,
+    blobX: CLUSTER[cl].x + Math.cos(oa) * orr * 0.135 * skewX,
+    blobY: CLUSTER[cl].y + Math.sin(oa) * orr * 0.125 * skewY,
+    badgeX: BADGE[cl].x + Math.cos(oa) * orr * 0.052,
+    badgeY: BADGE[cl].y + Math.sin(oa) * orr * 0.052 * 1.1,
+    x: 0, y: 0,
+    r: 1.6 + Math.random() * 3,
+    op: 0.45 + Math.random() * 0.5,
     wA: Math.random() * Math.PI * 2,
     wS: 0.005 + Math.random() * 0.012,
     ph: Math.random() * Math.PI * 2,
   });
 }
 
-let uTime = 0, uPhase = 0, uPT = 0;
-function ease(t) { return t < .5 ? 2*t*t : -1+(4-2*t)*t; }
-
-function animUmap() {
-  uTime += 0.011;
-  ux.setTransform(DPR, 0, 0, DPR, 0, 0);
-  ux.clearRect(0, 0, UW(), UH());
-
-  if (uPhase === 0 && uTime > 4.5) { uPhase = 1; uPT = 0; }
-  if (uPhase === 1) { uPT = Math.min(1, uPT + 0.011); if (uPT >= 1) uPhase = 2; }
-  if (uPhase === 2 && uTime > 13) {
-    uPhase = 0; uTime = 0;
-    pts.forEach(p => {
-      const a = Math.random() * Math.PI * 2, r = 0.06 + Math.random() * 0.32;
-      p.sx = 0.5 + Math.cos(a) * r; p.sy = 0.5 + Math.sin(a) * r * 0.68;
-    });
-  }
-  const prog = uPhase === 0 ? 0 : uPhase === 1 ? ease(uPT) : 1;
-
-  // Connections in stable phase
-  if (prog > 0.65) {
-    const la = (prog - 0.65) / 0.35;
-    for (let i = 0; i < N; i++) {
-      for (let j = i+1; j < N; j++) {
-        if (pts[i].cl !== pts[j].cl) continue;
-        const dx = (pts[i].x - pts[j].x) * UW(), dy = (pts[i].y - pts[j].y) * UH();
-        const d = Math.sqrt(dx*dx + dy*dy);
-        if (d < 40) {
-          const col = pts[i].cl === 0 ? '61,255,160' : '91,156,246';
-          ux.beginPath();
-          ux.moveTo(pts[i].x * UW(), pts[i].y * UH());
-          ux.lineTo(pts[j].x * UW(), pts[j].y * UH());
-          ux.strokeStyle = `rgba(${col},${0.09 * la * (1 - d/40)})`;
-          ux.lineWidth = 0.7; ux.stroke();
-        }
-      }
-    }
-  }
-
-  pts.forEach(p => {
-    p.wA += p.wS; p.ph += 0.028;
-    let px_, py_;
-    if (uPhase === 0) {
-      const orb = 0.055 + 0.28 * (1 - Math.min(uTime / 4.5, 1) * 0.25);
-      const spd = uTime * p.wS * 72 + p.wA;
-      p.sx += (0.5 + Math.cos(spd) * orb - p.sx) * 0.022;
-      p.sy += (0.5 + Math.sin(spd) * orb * 0.62 - p.sy) * 0.022;
-      px_ = p.sx; py_ = p.sy;
-    } else {
-      const wx = Math.sin(p.wA * 2.1) * 0.005, wy = Math.cos(p.wA * 1.7) * 0.005;
-      px_ = p.sx + (p.tx + wx - p.sx) * prog;
-      py_ = p.sy + (p.ty + wy - p.sy) * prog;
-    }
-    p.x = px_; p.y = py_;
-    const pr = p.r * (1 + 0.07 * Math.sin(p.ph));
-    const col = p.cl === 0 ? '61,255,160' : '91,156,246';
-    const al = p.op * (prog > 0 ? 0.88 : 0.55);
-    ux.beginPath(); ux.arc(px_ * UW(), py_ * UH(), pr, 0, Math.PI * 2);
-    ux.fillStyle = `rgba(${col},${al})`; ux.fill();
-    if (pr > 3.5) {
-      ux.beginPath(); ux.arc(px_ * UW(), py_ * UH(), pr + 3, 0, Math.PI * 2);
-      ux.strokeStyle = `rgba(${col},${al * 0.14})`; ux.lineWidth = 0.6; ux.stroke();
-    }
-  });
-
-  if (prog > 0.82) {
-    const a = (prog - 0.82) / 0.18;
-    ux.font = `10px "JetBrains Mono",monospace`;
-    ux.fillStyle = `rgba(113,128,150,${a * 0.6})`;
-    ux.textAlign = 'center';
-    ux.fillText('UMAP 1 →', UW() / 2, UH() - 10);
-    ux.save(); ux.translate(13, UH() / 2); ux.rotate(-Math.PI / 2);
-    ux.fillText('UMAP 2 →', 0, 0); ux.restore();
-  }
-  requestAnimationFrame(animUmap);
-}
-requestAnimationFrame(animUmap);
-
 // ═══════════════════════════════════════════════
-// PATHWAY: EGFR network with light flow
+// Signalling network (EGFR): only nodes that carry signal
 // ═══════════════════════════════════════════════
-const pc = document.getElementById('pathwayCanvas');
-const ctx = pc.getContext('2d');
-const DPR2 = window.devicePixelRatio || 1;
-function rszP() {
-  const r = pc.parentElement.getBoundingClientRect();
-  const w = Math.min(r.width, 860);
-  pc.width = w * DPR2; pc.height = 520 * DPR2;
-  pc.style.width = w + 'px'; pc.style.height = '520px';
-}
-rszP(); window.addEventListener('resize', rszP);
-function PW() { return pc.width / DPR2; }
-function PH() { return pc.height / DPR2; }
-
 const NODES = [
   {id:'EGFR',x:.50,y:.06,r:22,lbl:'EGFR'},
   {id:'GRB2',x:.33,y:.19,r:14,lbl:'GRB2'},
@@ -322,7 +224,6 @@ const NODES = [
   {id:'PI3K',x:.68,y:.19,r:15,lbl:'PI3K'},
   {id:'RAF', x:.36,y:.38,r:15,lbl:'RAF'},
   {id:'AKT', x:.71,y:.36,r:15,lbl:'AKT'},
-  {id:'PTEN',x:.86,y:.26,r:12,lbl:'PTEN'},
   {id:'MEK', x:.29,y:.55,r:15,lbl:'MEK'},
   {id:'mTOR',x:.65,y:.55,r:14,lbl:'mTOR'},
   {id:'ERK', x:.29,y:.72,r:15,lbl:'ERK'},
@@ -331,8 +232,6 @@ const NODES = [
   {id:'MYC', x:.43,y:.88,r:13,lbl:'cMYC'},
   {id:'4EBP',x:.79,y:.87,r:12,lbl:'4EBP'},
 ];
-
-// role: A=green MAPK, B=blue PI3K, both=shared, cross=purple, inh=inhibit
 const EDGES = [
   {f:'EGFR',t:'GRB2',role:'A'},
   {f:'EGFR',t:'RAS', role:'both'},
@@ -342,7 +241,6 @@ const EDGES = [
   {f:'RAS', t:'RAF', role:'A'},
   {f:'RAS', t:'PI3K',role:'B'},
   {f:'PI3K',t:'AKT', role:'B'},
-  {f:'PTEN',t:'AKT', role:'inh'},
   {f:'RAF', t:'MEK', role:'A'},
   {f:'AKT', t:'mTOR',role:'B'},
   {f:'AKT', t:'MEK', role:'cross'},
@@ -353,132 +251,243 @@ const EDGES = [
   {f:'ERK', t:'MYC', role:'A'},
   {f:'ERK', t:'mTOR',role:'cross'},
 ];
+const ACTIVE_IDS = new Set();
+EDGES.forEach(e => { if (e.role !== 'inh') { ACTIVE_IDS.add(e.f); ACTIVE_IDS.add(e.t); } });
+const VNODES = NODES.filter(n => ACTIVE_IDS.has(n.id));
+const VEDGES = EDGES.filter(e => e.role !== 'inh' && ACTIVE_IDS.has(e.f) && ACTIVE_IDS.has(e.t));
 
 function gn(id) { return NODES.find(n => n.id === id); }
-function np(n) { return {x: n.x * PW(), y: n.y * PH()}; }
+// map node coords into the network band that sits below the header/badges
+function nx(n) { return (0.045 + n.x * 0.91) * W(); }
+function ny(n) { return (0.20 + n.y * 0.76) * H(); }
+function np(n) { return {x: nx(n), y: ny(n)}; }
+function rr(x,y,w,h,rad){ctx_rr(x,y,w,h,rad);}
+function ctx_rr(x,y,w,h,r){cx.beginPath();cx.moveTo(x+r,y);cx.arcTo(x+w,y,x+w,y+h,r);cx.arcTo(x+w,y+h,x,y+h,r);cx.arcTo(x,y+h,x,y,r);cx.arcTo(x,y,x+w,y,r);cx.closePath();}
 
 function mkStreams(roles, spd, col) {
-  return EDGES.filter(e => roles.includes(e.role)).map(e => {
-    const a = gn(e.f), b = gn(e.t);
-    return {
-      e, a: {x:a.x,y:a.y}, b: {x:b.x,y:b.y}, col,
-      parts: [0, 0.34, 0.67].map(o => ({t: (o + Math.random()*.1) % 1})),
-      spd: spd * (0.82 + Math.random() * 0.36),
-    };
-  });
+  return VEDGES.filter(e => roles.includes(e.role)).map(e => ({
+    e, col,
+    parts: [Math.random(), (Math.random() * 0.4 + 0.5) % 1].map(t => ({t})),
+    spd: spd * (0.82 + Math.random() * 0.36),
+  }));
 }
-
 const sA = mkStreams(['A','both'], 0.0048, '61,255,160');
 const sB = mkStreams(['B','both'], 0.0042, '91,156,246');
 const sC = mkStreams(['cross'],    0.003,  '155,109,255');
 const glow = {};
 NODES.forEach(n => { glow[n.id] = {g:0,b:0,p:0}; });
 
-function drawStreams(streams) {
+// ── cluster territories (Cluster A = MAPK left, Cluster B = PI3K right) ──
+function drawTerritories(alpha) {
+  cx.globalAlpha = alpha;
+  const w = W(), h = H();
+  const top = h*0.045, bh = h*0.945;
+  const lx = w*0.01, lw = w*0.478 - lx;
+  const rx = w*0.522, rw = w*0.99 - rx;
+
+  const lg = cx.createLinearGradient(lx,0,lx+lw,0);
+  lg.addColorStop(0,'rgba(61,255,160,0.055)'); lg.addColorStop(1,'rgba(61,255,160,0.012)');
+  ctx_rr(lx,top,lw,bh,14); cx.fillStyle=lg; cx.fill();
+  cx.strokeStyle='rgba(61,255,160,0.15)'; cx.lineWidth=1; cx.setLineDash([5,6]); cx.stroke(); cx.setLineDash([]);
+
+  const rg = cx.createLinearGradient(rx,0,rx+rw,0);
+  rg.addColorStop(0,'rgba(91,156,246,0.012)'); rg.addColorStop(1,'rgba(91,156,246,0.055)');
+  ctx_rr(rx,top,rw,bh,14); cx.fillStyle=rg; cx.fill();
+  cx.strokeStyle='rgba(91,156,246,0.15)'; cx.lineWidth=1; cx.setLineDash([5,6]); cx.stroke(); cx.setLineDash([]);
+  cx.globalAlpha = 1;
+}
+
+// header labels sit next to the receded cluster badges
+function drawHeaders(alpha) {
+  cx.globalAlpha = alpha;
+  const w = W(), h = H();
+  const ly = BADGE[0].y * h, ry = BADGE[1].y * h;
+  cx.textBaseline = 'middle';
+  cx.textAlign = 'left';
+  cx.font = '600 13px "JetBrains Mono",monospace'; cx.fillStyle = 'rgba(61,255,160,0.9)';
+  cx.fillText('CLUSTER A', BADGE[0].x*w + 30, ly - 6);
+  cx.font = '400 10.5px "Inter",sans-serif'; cx.fillStyle = 'rgba(120,200,170,0.6)';
+  cx.fillText('MAPK / ERK cascade', BADGE[0].x*w + 30, ly + 10);
+  cx.textAlign = 'right';
+  cx.font = '600 13px "JetBrains Mono",monospace'; cx.fillStyle = 'rgba(91,156,246,0.9)';
+  cx.fillText('CLUSTER B', BADGE[1].x*w - 30, ry - 6);
+  cx.font = '400 10.5px "Inter",sans-serif'; cx.fillStyle = 'rgba(130,170,220,0.6)';
+  cx.fillText('PI3K / AKT axis', BADGE[1].x*w - 30, ry + 10);
+  cx.globalAlpha = 1;
+}
+
+function drawEdges(alpha) {
+  cx.globalAlpha = alpha;
+  VEDGES.forEach(e => {
+    const a = gn(e.f), b = gn(e.t);
+    const pa = np(a), pb = np(b);
+    const dx = pb.x-pa.x, dy = pb.y-pa.y;
+    const len = Math.sqrt(dx*dx+dy*dy) || 1;
+    const ux_ = dx/len, uy_ = dy/len;
+    const sx = pa.x + ux_*a.r, sy = pa.y + uy_*a.r;
+    const ex = pb.x - ux_*b.r, ey = pb.y - uy_*b.r;
+    const colMap = {A:'rgba(61,255,160,.16)',B:'rgba(91,156,246,.16)',
+                    both:'rgba(150,230,200,.13)',cross:'rgba(155,109,255,.15)'};
+    cx.beginPath(); cx.moveTo(sx,sy); cx.lineTo(ex,ey);
+    cx.strokeStyle = colMap[e.role] || 'rgba(255,255,255,.08)';
+    cx.lineWidth = 1.2; cx.stroke();
+    const aw = 4;
+    cx.beginPath(); cx.moveTo(ex,ey);
+    cx.lineTo(ex-uy_*aw-ux_*6, ey+ux_*aw-uy_*6);
+    cx.lineTo(ex+uy_*aw-ux_*6, ey-ux_*aw-uy_*6);
+    cx.closePath(); cx.fillStyle = colMap[e.role]; cx.fill();
+  });
+  cx.globalAlpha = 1;
+}
+
+function drawStreams(streams, alpha) {
   streams.forEach(s => {
+    const a = gn(s.e.f), b = gn(s.e.t);
+    const pa = np(a), pb = np(b);
+    const dx = pb.x-pa.x, dy = pb.y-pa.y;
+    const len = Math.sqrt(dx*dx+dy*dy) || 1;
+    const ux_ = dx/len, uy_ = dy/len;
+    const ax = pa.x+ux_*a.r, ay = pa.y+uy_*a.r;
+    const bx = pb.x-ux_*b.r, by = pb.y-uy_*b.r;
+    const ex = bx-ax, ey = by-ay;
+    const key = s.col === '61,255,160' ? 'g' : s.col === '91,156,246' ? 'b' : 'p';
     s.parts.forEach(p => {
       p.t += s.spd; if (p.t > 1) p.t -= 1;
-      const ax = s.a.x*PW(), ay = s.a.y*PH();
-      const bx = s.b.x*PW(), by = s.b.y*PH();
-      const hx = ax+(bx-ax)*p.t, hy = ay+(by-ay)*p.t;
-      const t0 = Math.max(0, p.t - 0.40);
-      const tx0 = ax+(bx-ax)*t0, ty0 = ay+(by-ay)*t0;
-
-      // Three-layer light trail
-      for (const [w, al] of [[11,0.022],[5,0.08],[2.2,0.7]]) {
-        const g = ctx.createLinearGradient(tx0,ty0,hx,hy);
-        g.addColorStop(0, `rgba(${s.col},0)`);
-        g.addColorStop(1, `rgba(${s.col},${al})`);
-        ctx.beginPath(); ctx.moveTo(tx0,ty0); ctx.lineTo(hx,hy);
-        ctx.strokeStyle = g; ctx.lineWidth = w; ctx.lineCap = 'round'; ctx.stroke();
+      const tail = 0.55, head = p.t, t0 = Math.max(0, head - tail);
+      const hx = ax+ex*head, hy = ay+ey*head;
+      const tx = ax+ex*t0,   ty = ay+ey*t0;
+      const edgeFade = Math.min(1, head/0.12) * Math.min(1, (1-head)/0.12 + 0.15) * alpha;
+      for (const [w, al] of [[9,0.05],[4.5,0.13],[1.8,0.85]]) {
+        const g = cx.createLinearGradient(tx,ty,hx,hy);
+        g.addColorStop(0,   `rgba(${s.col},0)`);
+        g.addColorStop(0.7, `rgba(${s.col},${al*0.3*edgeFade})`);
+        g.addColorStop(1,   `rgba(${s.col},${al*edgeFade})`);
+        cx.beginPath(); cx.moveTo(tx,ty); cx.lineTo(hx,hy);
+        cx.strokeStyle = g; cx.lineWidth = w; cx.lineCap = 'round'; cx.stroke();
       }
-      // Head bloom
-      const hg = ctx.createRadialGradient(hx,hy,0,hx,hy,12);
-      hg.addColorStop(0, `rgba(${s.col},1)`);
-      hg.addColorStop(.3, `rgba(${s.col},.4)`);
-      hg.addColorStop(1, `rgba(${s.col},0)`);
-      ctx.beginPath(); ctx.arc(hx,hy,12,0,Math.PI*2);
-      ctx.fillStyle = hg; ctx.fill();
-
-      const key = s.col === '61,255,160' ? 'g' : s.col === '91,156,246' ? 'b' : 'p';
-      if (glow[s.e.f]) glow[s.e.f][key] = Math.min(1, (glow[s.e.f][key]||0) + 0.22);
-      if (glow[s.e.t]) glow[s.e.t][key] = Math.min(1, (glow[s.e.t][key]||0) + p.t * 0.65);
+      if (glow[s.e.f]) glow[s.e.f][key] = Math.min(1, (glow[s.e.f][key]||0) + 0.14*edgeFade);
+      if (glow[s.e.t]) glow[s.e.t][key] = Math.min(1, (glow[s.e.t][key]||0) + head * 0.7 * edgeFade);
     });
   });
 }
 
-function drawPathway() {
-  ctx.setTransform(DPR2, 0, 0, DPR2, 0, 0);
-  ctx.clearRect(0, 0, PW(), PH());
-  NODES.forEach(n => { glow[n.id] = {g:0,b:0,p:0}; });
-
-  // Static edges with arrows
-  EDGES.forEach(e => {
-    const a = gn(e.f), b = gn(e.t);
-    const pa = np(a), pb = np(b);
-    const dx = pb.x-pa.x, dy = pb.y-pa.y;
-    const len = Math.sqrt(dx*dx+dy*dy);
-    const ux_ = dx/len, uy_ = dy/len;
-    const sx = pa.x + ux_*a.r, sy = pa.y + uy_*a.r;
-    const ex = pb.x - ux_*b.r, ey = pb.y - uy_*b.r;
-    const colMap = {A:'rgba(61,255,160,.14)',B:'rgba(91,156,246,.14)',
-                    both:'rgba(150,230,200,.11)',cross:'rgba(155,109,255,.13)',
-                    inh:'rgba(255,80,80,.2)'};
-    ctx.beginPath(); ctx.moveTo(sx,sy); ctx.lineTo(ex,ey);
-    ctx.strokeStyle = colMap[e.role] || 'rgba(255,255,255,.07)';
-    ctx.lineWidth = 1.2; ctx.setLineDash(e.role==='inh'?[3,3]:[]);
-    ctx.stroke(); ctx.setLineDash([]);
-    if (e.role !== 'inh') {
-      const aw = 4;
-      ctx.beginPath(); ctx.moveTo(ex,ey);
-      ctx.lineTo(ex-uy_*aw-ux_*6, ey+ux_*aw-uy_*6);
-      ctx.lineTo(ex+uy_*aw-ux_*6, ey-ux_*aw-uy_*6);
-      ctx.closePath(); ctx.fillStyle = colMap[e.role]; ctx.fill();
-    } else {
-      ctx.beginPath(); ctx.arc(ex,ey,4,0,Math.PI*2);
-      ctx.fillStyle='rgba(255,80,80,.3)'; ctx.fill();
-    }
-  });
-
-  drawStreams(sA); drawStreams(sB); drawStreams(sC);
-
-  // Nodes
-  NODES.forEach(n => {
+function drawNodes(alpha) {
+  cx.globalAlpha = alpha;
+  VNODES.forEach(n => {
     const p = np(n);
     const gl = glow[n.id];
     const hasG = gl.g > .08, hasB = gl.b > .08, hasP = gl.p > .08;
-
     if (hasG) {
-      const og = ctx.createRadialGradient(p.x,p.y,n.r,p.x,p.y,n.r+18);
+      const og = cx.createRadialGradient(p.x,p.y,n.r,p.x,p.y,n.r+18);
       og.addColorStop(0,`rgba(61,255,160,${gl.g*.3})`); og.addColorStop(1,'rgba(61,255,160,0)');
-      ctx.beginPath(); ctx.arc(p.x,p.y,n.r+18,0,Math.PI*2); ctx.fillStyle=og; ctx.fill();
+      cx.beginPath(); cx.arc(p.x,p.y,n.r+18,0,Math.PI*2); cx.fillStyle=og; cx.fill();
     }
     if (hasB) {
-      const og = ctx.createRadialGradient(p.x,p.y,n.r,p.x,p.y,n.r+18);
+      const og = cx.createRadialGradient(p.x,p.y,n.r,p.x,p.y,n.r+18);
       og.addColorStop(0,`rgba(91,156,246,${gl.b*.3})`); og.addColorStop(1,'rgba(91,156,246,0)');
-      ctx.beginPath(); ctx.arc(p.x,p.y,n.r+18,0,Math.PI*2); ctx.fillStyle=og; ctx.fill();
+      cx.beginPath(); cx.arc(p.x,p.y,n.r+18,0,Math.PI*2); cx.fillStyle=og; cx.fill();
     }
-
     const fill = hasG&&hasB?'rgba(80,215,195,.18)':hasG?'rgba(61,255,160,.15)':
                  hasB?'rgba(91,156,246,.15)':hasP?'rgba(155,109,255,.12)':'rgba(18,23,32,.95)';
     const stroke = hasG&&hasB?'rgba(120,245,215,.85)':hasG?'rgba(61,255,160,.82)':
                    hasB?'rgba(91,156,246,.82)':hasP?'rgba(155,109,255,.65)':
                    n.id==='EGFR'?'rgba(255,255,255,.42)':'rgba(255,255,255,.11)';
-    ctx.beginPath(); ctx.arc(p.x,p.y,n.r,0,Math.PI*2);
-    ctx.fillStyle=fill; ctx.strokeStyle=stroke;
-    ctx.lineWidth=hasG||hasB?1.6:.7; ctx.fill(); ctx.stroke();
-
+    cx.beginPath(); cx.arc(p.x,p.y,n.r,0,Math.PI*2);
+    cx.fillStyle=fill; cx.strokeStyle=stroke;
+    cx.lineWidth=hasG||hasB?1.6:.7; cx.fill(); cx.stroke();
     const fs = Math.max(8, n.r * 0.52);
-    ctx.font = `500 ${fs}px "JetBrains Mono",monospace`;
+    cx.font = `500 ${fs}px "JetBrains Mono",monospace`;
     const tc = hasG&&hasB?'rgba(160,248,225,1)':hasG?'rgba(61,255,160,1)':
-               hasB?'rgba(91,156,246,1)':hasP?'rgba(155,109,255,.9)':'rgba(238,240,244,.28)';
-    ctx.fillStyle=tc; ctx.textAlign='center'; ctx.textBaseline='middle';
-    ctx.fillText(n.lbl, p.x, p.y);
+               hasB?'rgba(91,156,246,1)':hasP?'rgba(155,109,255,.9)':'rgba(238,240,244,.3)';
+    cx.fillStyle=tc; cx.textAlign='center'; cx.textBaseline='middle';
+    cx.fillText(n.lbl, p.x, p.y);
   });
-
-  requestAnimationFrame(drawPathway);
+  cx.globalAlpha = 1;
 }
-requestAnimationFrame(drawPathway);
+
+function drawParticles(cp, mp) {
+  const w = W(), h = H();
+  // faint intra-cluster web while cells are grouped, fading as the network takes over
+  if (cp > 0.5 && mp < 1) {
+    const la = (cp - 0.5) / 0.5 * (1 - mp);
+    for (let i = 0; i < N; i++) {
+      for (let j = i+1; j < N; j++) {
+        if (pts[i].cl !== pts[j].cl) continue;
+        const dx = (pts[i].x - pts[j].x) * w, dy = (pts[i].y - pts[j].y) * h;
+        const d = Math.sqrt(dx*dx + dy*dy);
+        if (d < 34) {
+          const col = pts[i].cl === 0 ? '61,255,160' : '91,156,246';
+          cx.beginPath();
+          cx.moveTo(pts[i].x*w, pts[i].y*h); cx.lineTo(pts[j].x*w, pts[j].y*h);
+          cx.strokeStyle = `rgba(${col},${0.10 * la * (1 - d/34)})`;
+          cx.lineWidth = 0.7; cx.stroke();
+        }
+      }
+    }
+  }
+  pts.forEach(p => {
+    p.wA += p.wS; p.ph += 0.03;
+    let X, Y;
+    if (cp <= 0) {
+      const orb = 0.06 + 0.25 * (1 - clamp(T / SWIRL, 0, 1) * 0.4);
+      const spd = T * p.wS * 72 + p.wA;
+      p.sx += (0.5 + Math.cos(spd) * orb - p.sx) * 0.05;
+      p.sy += (0.46 + Math.sin(spd) * orb * 0.6 - p.sy) * 0.05;
+      X = p.sx; Y = p.sy;
+    } else if (mp <= 0) {
+      const e = ease(cp);
+      const wob = mp; // 0 here
+      X = p.sx + (p.blobX - p.sx) * e;
+      Y = p.sy + (p.blobY - p.sy) * e;
+    } else {
+      const e = ease(mp);
+      X = p.blobX + (p.badgeX - p.blobX) * e;
+      Y = p.blobY + (p.badgeY - p.blobY) * e;
+    }
+    p.x = X; p.y = Y;
+    const pr = p.r * (1 + 0.07 * Math.sin(p.ph)) * (1 - mp * 0.5);
+    const col = p.cl === 0 ? '61,255,160' : '91,156,246';
+    const al = p.op * (1 - mp * 0.78) * (cp <= 0 ? 0.7 : 1);
+    cx.beginPath(); cx.arc(X * w, Y * h, Math.max(0.4, pr), 0, Math.PI * 2);
+    cx.fillStyle = `rgba(${col},${al})`; cx.fill();
+  });
+}
+
+// ═══════════════════════════════════════════════
+// Timeline: swirl → cluster → hold → morph into network
+// ═══════════════════════════════════════════════
+let T = 0;
+const SWIRL = 2.0, CLUSTER_END = 3.3, HOLD_END = 4.0, MORPH_END = 5.3;
+
+function frame() {
+  T += 1/60;
+  cx.setTransform(DPR, 0, 0, DPR, 0, 0);
+  cx.clearRect(0, 0, W(), H());
+
+  const cp = clamp((T - SWIRL) / (CLUSTER_END - SWIRL), 0, 1);
+  const mp = clamp((T - HOLD_END) / (MORPH_END - HOLD_END), 0, 1);
+  const netProg = mp;
+
+  // network fades in behind the receding cells
+  if (netProg > 0.001) {
+    NODES.forEach(n => { glow[n.id] = {g:0,b:0,p:0}; });
+    drawTerritories(netProg);
+    drawEdges(netProg);
+    cx.globalCompositeOperation = 'lighter'; cx.globalAlpha = netProg;
+    drawStreams(sA, 1); drawStreams(sB, 1); drawStreams(sC, 1);
+    cx.globalAlpha = 1; cx.globalCompositeOperation = 'source-over';
+    drawNodes(netProg);
+  }
+
+  // cells: whirlpool → clusters → recede to header badges (stay as faint background)
+  drawParticles(cp, mp);
+
+  // cluster headers appear as the cells settle into the badges
+  if (netProg > 0.001) drawHeaders(netProg);
+
+  requestAnimationFrame(frame);
+}
+requestAnimationFrame(frame);
 </script>
 </body>
 </html>
