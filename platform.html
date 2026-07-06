@@ -6,6 +6,7 @@
 <title>Platform — SignallingIntelligence by Tim Stohn</title>
 <meta name="description" content="The SignallingIntelligence platform combines AI and mechanistic modelling to recover signalling biology, quantify drug-treatment effects, and determine new therapeutic targets from single-cell data.">
 <meta name="author" content="Tim Stohn">
+<meta name="keywords" content="single-cell signalling, single-cell proteomics, single-cell phosphoproteomics, phosphoprotein networks, signal transduction network inference, pathway inference, Phospho-seq, SIGNAL-seq, ESGI, ISFaN, LoCo, drug target discovery, SignallingIntelligence">
 <link rel="canonical" href="https://signallingintelligence.com/platform.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="SignallingIntelligence">
@@ -41,6 +42,16 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 #plat{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:8rem 2rem 6rem}
 #plat h1{font-size:clamp(2rem,4.6vw,3.6rem);font-weight:300;line-height:1.12;letter-spacing:-.03em;color:var(--white);max-width:900px}
 #plat h1 b{font-weight:500;color:var(--green)}
+.pcontent{max-width:900px;margin:0 auto;padding:0 2rem 6rem}
+.pcontent h2{font-size:clamp(1.5rem,3vw,2.1rem);font-weight:300;letter-spacing:-.02em;color:var(--white);margin-bottom:1rem;text-align:center}
+.pcontent h2 b{font-weight:500;color:var(--green)}
+.pcontent .lead{font-size:.95rem;color:var(--faint);line-height:1.85;max-width:680px;margin:0 auto 2.5rem;text-align:center}
+.pgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;border:1px solid rgba(255,255,255,.06);background:rgba(255,255,255,.06)}
+.pcard{background:var(--bg);padding:1.8rem}
+.pcard h3{font-family:var(--mono);font-size:12px;color:var(--green);letter-spacing:.05em;margin-bottom:.6rem}
+.pcard p{font-size:13px;color:var(--muted);line-height:1.7}
+.pclose{font-size:.92rem;color:var(--faint);line-height:1.85;max-width:680px;margin:2.5rem auto 0;text-align:center}
+.pclose b{color:var(--white);font-weight:500}
 footer{border-top:1px solid rgba(255,255,255,.06);padding:1.5rem 2.5rem;display:flex;justify-content:space-between;align-items:center}
 .flogo{font-family:var(--mono);font-size:11px;color:var(--faint)}
 .flogo em{font-style:normal;color:var(--green)}
@@ -161,6 +172,18 @@ footer{border-top:1px solid rgba(255,255,255,.06);padding:1.5rem 2.5rem;display:
 <section id="plat">
   <div class="pill">The platform</div>
   <h1>Combining <b>AI and mechanistic modelling</b> to recover signalling biology, quantify drug-treatment effects, and determine new therapeutic targets.</h1>
+</section>
+
+<section class="pcontent">
+  <h2>Single-cell <b>signalling</b> analysis, end to end</h2>
+  <p class="lead">SignallingIntelligence reconstructs signal transduction and phosphoprotein networks from single-cell protein and phosphoprotein data, then uses them to quantify drug-treatment effects and prioritise new therapeutic targets. The platform combines peer-reviewed mechanistic tools with AI-driven models, keeping the biology interpretable at every step.</p>
+  <div class="pgrid">
+    <div class="pcard"><h3>01 / Demultiplexing &mdash; ESGI</h3><p>ESGI resolves multi-pattern combinatorial barcodes for Phospho-seq and SIGNAL-seq single-cell sequencing data with high read-recovery accuracy.</p></div>
+    <div class="pcard"><h3>02 / Normalisation &mdash; ... </h3><p>Our normalization method performs cell-size normalisation for single-cell proteomics, separating biological concentration from technical abundance and library-size effects.</p></div>
+    <div class="pcard"><h3>03 / Local correlation &mdash; LoCo</h3><p>LoCo finds co-varying protein and phosphoprotein pairs within cell-state neighbourhoods, resolving signalling relationships invisible to global correlation.</p></div>
+    <div class="pcard"><h3>04 / Network inference</h3><p>Correlation programs are mapped onto SIGNOR and OmniPath to reconstruct active signal transduction and phosphoprotein networks, then compared across cell states.</p></div>
+  </div>
+  <p class="pclose">Because drug response and resistance are driven by <b>signalling network rewiring</b> at the protein level &mdash; often invisible to transcriptomics &mdash; single-cell phosphoproteomics lets us see how a treatment changes signalling flow and pinpoint the nodes that drive each cell's behaviour, revealing <b>new therapeutic targets</b>.</p>
 </section>
 
 <footer>
