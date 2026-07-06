@@ -3,8 +3,60 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SignallingIntelligence</title>
+<title>SignallingIntelligence — Single-cell signalling analysis by Tim Stohn</title>
+<meta name="description" content="SignallingIntelligence, founded by Tim Stohn, decodes intracellular signalling at single-cell resolution — combining AI and mechanistic modelling to reveal drug effects and identify new therapeutic targets from single-cell protein data.">
+<meta name="author" content="Tim Stohn">
+<meta name="keywords" content="SignallingIntelligence, Signalling Intelligence, Tim Stohn, single-cell signalling, single-cell proteomics, phospho-seq, SIGNAL-seq, signalling pathway inference, drug target discovery">
+<link rel="canonical" href="https://signallingintelligence.com/">
+<meta name="robots" content="index, follow">
+
+<!-- Open Graph / social -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SignallingIntelligence">
+<meta property="og:title" content="SignallingIntelligence — Single-cell signalling analysis by Tim Stohn">
+<meta property="og:description" content="Decoding intracellular signalling at single-cell resolution. Founded by Tim Stohn — combining AI and mechanistic modelling to reveal drug effects and identify new therapeutic targets.">
+<meta property="og:url" content="https://signallingintelligence.com/">
+<meta property="og:image" content="https://signallingintelligence.com/Tim.jpeg">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SignallingIntelligence — Single-cell signalling analysis by Tim Stohn">
+<meta name="twitter:description" content="Decoding intracellular signalling at single-cell resolution. Founded by Tim Stohn.">
+<meta name="twitter:image" content="https://signallingintelligence.com/Tim.jpeg">
+
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<!-- Structured data: helps Google connect "SignallingIntelligence" and "Tim Stohn" -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://signallingintelligence.com/#organization",
+      "name": "SignallingIntelligence",
+      "url": "https://signallingintelligence.com/",
+      "email": "t.stohn@signallingintelligence.com",
+      "logo": "https://signallingintelligence.com/Tim.jpeg",
+      "description": "Single-cell signalling analysis combining AI and mechanistic modelling to reveal drug effects and identify new therapeutic targets from single-cell protein data.",
+      "founder": {
+        "@type": "Person",
+        "@id": "https://signallingintelligence.com/#tim-stohn",
+        "name": "Tim Stohn",
+        "email": "t.stohn@signallingintelligence.com",
+        "jobTitle": "Founder",
+        "worksFor": { "@id": "https://signallingintelligence.com/#organization" },
+        "affiliation": "Leiden"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://signallingintelligence.com/#website",
+      "url": "https://signallingintelligence.com/",
+      "name": "SignallingIntelligence",
+      "publisher": { "@id": "https://signallingintelligence.com/#organization" }
+    }
+  ]
+}
+</script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -39,6 +91,8 @@ h1 b{font-weight:500;color:var(--green)}
 .cta-g{font-family:var(--mono);font-size:13px;color:var(--faint);border:1px solid rgba(255,255,255,.15);padding:.72rem 1.4rem;border-radius:4px;text-decoration:none;transition:color .2s,border-color .2s;letter-spacing:.04em}
 .cta-g:hover{color:var(--white);border-color:rgba(255,255,255,.35)}
 #flowWrap{width:100%;max-width:900px;margin:1.4rem auto 0;scroll-margin-top:80px}
+.flow-caption{font-size:.92rem;color:var(--faint);line-height:1.8;max-width:660px;margin:0 auto 1.4rem;text-align:center}
+.flow-caption b{color:var(--white);font-weight:500}
 #flowCanvas{width:100%;height:460px;display:block}
 .umap-labels{display:flex;justify-content:center;gap:1rem;margin-top:1rem;flex-wrap:wrap}
 .pop-card{display:flex;align-items:center;gap:.65rem;padding:.55rem 1.05rem;border-radius:8px;background:var(--bg2);border:1px solid rgba(255,255,255,.07)}
@@ -90,6 +144,9 @@ h2 b{font-weight:500}
 .avatar{width:108px;height:108px;border-radius:50%;object-fit:cover;border:2px solid rgba(61,255,160,.4);background:var(--bg2);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:30px;color:var(--green)}
 .contact-name{font-size:18px;font-weight:500;color:var(--white);margin-top:.9rem}
 .contact-role{font-size:13px;color:var(--faint);margin-top:.2rem;margin-bottom:1.3rem}
+.people{display:flex;gap:2rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.4rem}
+.person{display:flex;flex-direction:column;align-items:center;max-width:200px}
+.person .contact-role{margin-bottom:0}
 .email-btn{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--mono);font-size:13px;color:var(--green);background:rgba(61,255,160,.08);border:1px solid rgba(61,255,160,.32);padding:.72rem 1.15rem;border-radius:9px;text-decoration:none;transition:background .2s,border-color .2s}
 .email-btn:hover{background:rgba(61,255,160,.16);border-color:rgba(61,255,160,.5)}
 .email-btn svg{flex-shrink:0}
@@ -118,7 +175,7 @@ footer{border-top:1px solid rgba(255,255,255,.06);padding:1.5rem 2.5rem;display:
     <span class="logo-text">Signalling<em>Intelligence</em></span>
   </a>
   <div class="nav-r">
-    <a href="#flowWrap">Platform</a>
+    <a href="platform.html">Platform</a>
     <a href="#features">Methods</a>
     <a href="#why">Why us</a>
     <a href="#reading">Research</a>
@@ -132,10 +189,11 @@ footer{border-top:1px solid rgba(255,255,255,.06);padding:1.5rem 2.5rem;display:
     <p class="sub">We extract, map, and interpret intracellular signalling programs from single-cell protein data &mdash; turning it into actionable pathway biology for drug discovery. By combining AI-driven and mechanistic models, we deliver explainable insight into the signalling mechanisms that drive each cell's behaviour.</p>
     <div class="ctas">
       <a href="#contact" class="cta-p">Request a demo</a>
-      <a href="#flowWrap" class="cta-g">See the platform &rarr;</a>
+      <a href="platform.html" class="cta-g">See the platform &rarr;</a>
     </div>
   </div>
   <div id="flowWrap">
+    <p class="flow-caption">Differences in signalling drive cell fate &mdash; distinct clusters run distinct pathway programs. We recover those signalling differences for you, so you can understand drug effects at the signalling level and better predict potential targets by leveraging the flow of information through the network.</p>
     <canvas id="flowCanvas"></canvas>
     <div class="pathway-legend" style="margin-top:.7rem;margin-bottom:0">
       <div class="pleg"><div class="pl-g"></div><span style="color:var(--green)">Cluster A &mdash; MAPK / ERK branch</span></div>
@@ -210,10 +268,20 @@ footer{border-top:1px solid rgba(255,255,255,.06);padding:1.5rem 2.5rem;display:
     <h2>Let's make sense of<br><b>your dataset</b></h2>
     <p>Want to decode signalling in your single-cell data? Reach out to see how our platform can help you disentangle signalling effects at the single-cell level.</p>
     <div class="contact-card">
-      <img class="avatar" src="Tim.jpeg" alt="Tim Stohn"
-           onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'avatar',textContent:'TS'}))">
-      <div class="contact-name">Tim Stohn</div>
-      <div class="contact-role">SignallingIntelligence &middot; Leiden</div>
+      <div class="people">
+        <div class="person">
+          <img class="avatar" src="Tim.jpeg" alt="Tim Stohn"
+               onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'avatar',textContent:'TS'}))">
+          <div class="contact-name">Tim Stohn</div>
+          <div class="contact-role">SignallingIntelligence &middot; Leiden</div>
+        </div>
+        <div class="person">
+          <img class="avatar" src="Ezgi.jpeg" alt="Ezgi Arslanturkoglu"
+               onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'avatar',textContent:'EA'}))">
+          <div class="contact-name">Ezgi Arslanturkoglu</div>
+          <div class="contact-role">SignallingIntelligence &middot; Leiden</div>
+        </div>
+      </div>
       <a class="email-btn" href="mailto:t.stohn@signallingintelligence.com">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
         t.stohn@signallingintelligence.com
@@ -221,7 +289,6 @@ footer{border-top:1px solid rgba(255,255,255,.06);padding:1.5rem 2.5rem;display:
       <button class="copy-btn" type="button"
               onclick="navigator.clipboard&amp;&amp;navigator.clipboard.writeText('t.stohn@signallingintelligence.com');this.textContent='Copied &#10003;';setTimeout(()=>this.textContent='Copy address',1500)">Copy address</button>
     </div>
-    <div class="cnote" style="margin-top:1.5rem">Leiden</div>
   </div>
 </section>
 
@@ -531,8 +598,7 @@ function scatter() {
 
 function frame() {
   if (W() === 0) rsz();                       // guard against a 0-width first layout
-  T += 1/60;
-  if (T > LOOP_END) { T = 0; scatter(); }     // loop: whirl → cluster → network → repeat
+  if (T < MORPH_END) T += 1/60;               // whirl → cluster → network, then hold (streams keep flowing); reload to replay
   cx.setTransform(DPR, 0, 0, DPR, 0, 0);
   cx.clearRect(0, 0, W(), H());
 
