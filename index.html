@@ -34,7 +34,7 @@
       "@id": "https://signallingintelligence.com/#organization",
       "name": "SignallingIntelligence",
       "url": "https://signallingintelligence.com/",
-      "email": "t.stohn@signallingintelligence.com",
+      "email": "info@signallingintelligence.com",
       "logo": "https://signallingintelligence.com/Tim.jpeg",
       "description": "Single-cell signalling analysis combining AI and mechanistic modelling to reveal drug effects and identify new therapeutic targets from single-cell protein data.",
       "founder": {
@@ -140,13 +140,17 @@ h2 b{font-weight:500}
 .pub-m{font-family:var(--mono);font-size:11px;color:var(--faint)}
 .pub-arrow{color:var(--faint);font-size:16px;flex-shrink:0}
 .pub:hover .pub-arrow{color:var(--green)}
-.contact-card{max-width:480px;margin:1.8rem auto 0;background:var(--bg);border:1px solid rgba(255,255,255,.09);border-radius:16px;padding:2.1rem 1.8rem;display:flex;flex-direction:column;align-items:center}
+.contact-card{max-width:560px;margin:1.8rem auto 0;background:var(--bg);border:1px solid rgba(255,255,255,.09);border-radius:16px;padding:2.1rem 1.8rem;display:flex;flex-direction:column;align-items:center}
 .avatar{width:108px;height:108px;border-radius:50%;object-fit:cover;border:2px solid rgba(61,255,160,.4);background:var(--bg2);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:30px;color:var(--green)}
 .contact-name{font-size:18px;font-weight:500;color:var(--white);margin-top:.9rem}
 .contact-role{font-size:13px;color:var(--faint);margin-top:.2rem;margin-bottom:1.3rem}
 .people{display:flex;gap:2rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.4rem}
-.person{display:flex;flex-direction:column;align-items:center;max-width:200px}
-.person .contact-role{margin-bottom:0}
+.person{display:flex;flex-direction:column;align-items:center;max-width:235px}
+.person .contact-role{margin-bottom:.55rem}
+.person .contact-name{margin-top:.3rem}
+.contact-title{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--green);margin-top:.85rem;line-height:1.35}
+.person-email{font-family:var(--mono);font-size:11px;color:var(--faint);text-decoration:none;word-break:break-word;line-height:1.4;transition:color .2s}
+.person-email:hover{color:var(--green)}
 .email-btn{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--mono);font-size:13px;color:var(--green);background:rgba(61,255,160,.08);border:1px solid rgba(61,255,160,.32);padding:.72rem 1.15rem;border-radius:9px;text-decoration:none;transition:background .2s,border-color .2s}
 .email-btn:hover{background:rgba(61,255,160,.16);border-color:rgba(61,255,160,.5)}
 .email-btn svg{flex-shrink:0}
@@ -205,10 +209,10 @@ footer{border-top:1px solid rgba(255,255,255,.06);padding:1.5rem 2.5rem;display:
 
 <section id="features">
   <div class="feat-grid">
-    <div class="feat"><div class="feat-n">01 / DEMUX</div><div class="feat-t">Barcode demultiplexing</div><div class="feat-d">ESGI handles multi-pattern combinatorial barcoding for Phospho-seq and SIGNAL-seq with high read-recovery accuracy.</div></div>
-    <div class="feat"><div class="feat-n">02 / NORM</div><div class="feat-t">Cell-size normalisation</div><div class="feat-d">ISFaN separates biological concentration from technical abundance &mdash; correcting library size and cell-size variation simultaneously.</div></div>
-    <div class="feat"><div class="feat-n">03 / CORR</div><div class="feat-t">Local correlation analysis</div><div class="feat-d">LoCo finds co-varying protein pairs within cell-state neighbourhoods, resolving relationships invisible to global correlation methods.</div></div>
-    <div class="feat"><div class="feat-n">04 / NET</div><div class="feat-t">Pathway inference</div><div class="feat-d">Correlation programs are mapped onto SIGNOR and OmniPath networks to identify which signalling programs are active across cell states.</div></div>
+    <div class="feat"><div class="feat-n">01 / DEMUX</div><div class="feat-t">Processing of raw sequncing data</div><div class="feat-d">We use our own demultiplexing platform (ESGI, see papers below), which handles any barcoded single-cell sequencing technology with enhanced read-recovery accuracy and detailed error reports for fine-tuning experimental design.</div></div>
+    <div class="feat"><div class="feat-n">02 / NORM</div><div class="feat-t">Normalisation of single-cell count data</div><div class="feat-d">We use our own state-of-the-art normalization method. It mayorly improves normalization comapred to current normalization standards and separates biological concentration from technical abundance &mdash; correcting library size and cell-size variation simultaneously.</div></div>
+    <div class="feat"><div class="feat-n">03 / CORR</div><div class="feat-t">Local correlation analysis</div><div class="feat-d">We use our own tool LoCo (Local Correlation) to find locally co-varying protein pairs within cell-state neighbourhoods, resolving relationships invisible to global correlation methods. These interpretable patterns are used in our own AI-model to make further predictions on cell-state specific signalling cahnges. </div></div>
+    <div class="feat"><div class="feat-n">04 / NET</div><div class="feat-t">Pathway inference</div><div class="feat-d">Correlation programs are inferred per population with scCNR/scMRA (see papers below). This algorithm then gives us mechanistic insight into cell-state specific signalling networks. This insight is then further analyzed by our own AI platform to give further insight into the signalling networks on the single-cell level.</div></div>
   </div>
 </section>
 
@@ -232,13 +236,15 @@ footer{border-top:1px solid rgba(255,255,255,.06);padding:1.5rem 2.5rem;display:
   <div class="section-header">
     <div class="sec-eyebrow">Further reading</div>
     <h2>The <b>science</b> behind the platform</h2>
-    <p class="sec-sub">Peer-reviewed methods and preprints behind our demultiplexing, normalisation, and signalling-network inference.</p>
+    <p class="sec-sub"> The SignallingIntelligence (SI) platform grew out of Tim Stohn's PhD thesis, which produced a suite of tools for analyzing single-cell phosphoprotein data. 
+      SI builds on this foundation by combining several peer-reviewed tools — which generate mechanistic input — with AI-driven models that refine our understanding of signalling, 
+      without sacrificing the interpretability of the mechanistic insight. Here you can find peer-reviewed methods and preprints behind our demultiplexing, normalisation, and signalling-network inference methods.</p>
   </div>
   <div class="pub-list">
     <a class="pub" href="https://academic.oup.com/bioinformatics/article/42/1/btaf675/8403744" target="_blank" rel="noopener">
       <span class="pub-badge">Bioinformatics</span>
       <div class="pub-body">
-        <div class="pub-t">Reconstructing and comparing signal transduction networks from single-cell protein quantification data</div>
+        <div class="pub-t"> Our pathway inference method &mdash; Reconstructing and comparing signal transduction networks from single-cell protein quantification data</div>
         <div class="pub-m">Stohn, van Eijl, Mulder, Wessels &amp; Bosdriesz &middot; Bioinformatics &middot; 2026</div>
       </div>
       <span class="pub-arrow">&rarr;</span>
@@ -246,16 +252,16 @@ footer{border-top:1px solid rgba(255,255,255,.06);padding:1.5rem 2.5rem;display:
     <a class="pub" href="https://www.mcponline.org/article/S1535-9476(26)00025-3/fulltext" target="_blank" rel="noopener">
       <span class="pub-badge">Mol&nbsp;Cell&nbsp;Proteomics</span>
       <div class="pub-body">
-        <div class="pub-t">Single-cell signalling proteomics &mdash; method</div>
-        <div class="pub-m">Molecular &amp; Cellular Proteomics &middot; 2026</div>
+        <div class="pub-t"> Application example of our pathway inference method  &mdash; Cell-State-Specific Drug Responses are Associated With Differences in Signaling Network Wiring </div>
+        <div class="pub-m"> Krämer, van Eijl, Stohn, Tanis,  Wessels3, Bosdriesz, Mulder    &middot;     Molecular &amp; Cellular Proteomics &middot; 2026</div>
       </div>
       <span class="pub-arrow">&rarr;</span>
     </a>
     <a class="pub" href="https://www.biorxiv.org/content/10.64898/2026.03.04.709594v1.abstract" target="_blank" rel="noopener">
       <span class="pub-badge">Preprint &middot; bioRxiv</span>
       <div class="pub-body">
-        <div class="pub-t">Single-cell signalling analysis &mdash; preprint</div>
-        <div class="pub-m">bioRxiv &middot; 2026</div>
+        <div class="pub-t">Our generic sequencing processing tool &mdash; ESGI: Efficient splitting of generic indices in single-cell sequencing data </div>
+        <div class="pub-m"> Stohn, van de Brug, Theodosiadou, Thijjssen, Jastrzebski, Wessels, Bosdriesz &middot; bioRxiv &middot; 2026</div>
       </div>
       <span class="pub-arrow">&rarr;</span>
     </a>
@@ -272,22 +278,26 @@ footer{border-top:1px solid rgba(255,255,255,.06);padding:1.5rem 2.5rem;display:
         <div class="person">
           <img class="avatar" src="Tim.jpeg" alt="Tim Stohn"
                onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'avatar',textContent:'TS'}))">
+          <div class="contact-title">Scientific Advisor</div>
           <div class="contact-name">Tim Stohn</div>
           <div class="contact-role">SignallingIntelligence &middot; Leiden</div>
+          <a class="person-email" href="mailto:t.stohn@signallingintelligence.com">t.stohn@signallingintelligence.com</a>
         </div>
         <div class="person">
-          <img class="avatar" src="Ezgi.jpeg" alt="Ezgi Arslanturkoglu"
+          <img class="avatar" src="Ezgi.jpeg" alt="Ezgi Arslantürkoğlu"
                onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'avatar',textContent:'EA'}))">
-          <div class="contact-name">Ezgi Arslanturkoglu</div>
+          <div class="contact-title">Business Development &amp; Partnerships</div>
+          <div class="contact-name">Ezgi Arslantürkoğlu</div>
           <div class="contact-role">SignallingIntelligence &middot; Leiden</div>
+          <a class="person-email" href="mailto:e.arslanturkoglu@signallingintelligence.com">e.arslanturkoglu@signallingintelligence.com</a>
         </div>
       </div>
-      <a class="email-btn" href="mailto:t.stohn@signallingintelligence.com">
+      <a class="email-btn" href="mailto:info@signallingintelligence.com">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
-        t.stohn@signallingintelligence.com
+        info@signallingintelligence.com
       </a>
       <button class="copy-btn" type="button"
-              onclick="navigator.clipboard&amp;&amp;navigator.clipboard.writeText('t.stohn@signallingintelligence.com');this.textContent='Copied &#10003;';setTimeout(()=>this.textContent='Copy address',1500)">Copy address</button>
+              onclick="navigator.clipboard&amp;&amp;navigator.clipboard.writeText('info@signallingintelligence.com');this.textContent='Copied &#10003;';setTimeout(()=>this.textContent='Copy address',1500)">Copy address</button>
     </div>
   </div>
 </section>
