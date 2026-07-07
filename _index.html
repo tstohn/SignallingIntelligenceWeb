@@ -181,8 +181,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .nav-r a:hover{color:var(--white)}
 .nav-btn{font-family:var(--mono);font-size:12px;color:var(--green);border:1px solid rgba(61,255,160,.3);padding:.4rem 1rem;border-radius:4px;text-decoration:none;letter-spacing:.04em;transition:background .2s}
 .nav-btn:hover{background:rgba(61,255,160,.08)}
-#hero{min-height:auto;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:92px 2rem 1.2rem;text-align:center}
+#hero{min-height:auto;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:92px 2rem 4.5rem;text-align:center}
 .hero-text{max-width:760px;margin:0 auto 2rem}
+.lede{font-size:1.05rem;font-weight:300;color:var(--white);opacity:.78;line-height:1.7;max-width:600px;margin:1rem auto 0}
+.pipeline-text{max-width:680px;margin:2.6rem auto 0}
 .pill{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--mono);font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--green);background:rgba(61,255,160,.07);border:1px solid rgba(61,255,160,.2);padding:.3rem .9rem;border-radius:20px;margin-bottom:1.6rem}
 .pill::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--green);animation:blink 2s infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
@@ -195,7 +197,7 @@ h1 b{font-weight:500;color:var(--green)}
 .cta-g{font-family:var(--mono);font-size:13px;color:var(--faint);border:1px solid rgba(255,255,255,.15);padding:.72rem 1.4rem;border-radius:4px;text-decoration:none;transition:color .2s,border-color .2s;letter-spacing:.04em}
 .cta-g:hover{color:var(--white);border-color:rgba(255,255,255,.35)}
 #flowWrap{width:100%;max-width:900px;margin:1.4rem auto 0;scroll-margin-top:80px}
-.flow-caption{font-size:.92rem;color:var(--faint);line-height:1.8;max-width:660px;margin:0 auto 1.4rem;text-align:center}
+.flow-caption{font-size:.9rem;color:var(--faint);line-height:1.8;max-width:660px;margin:1.1rem auto 0;text-align:center}
 .flow-caption b{color:var(--white);font-weight:500}
 #flowCanvas{width:100%;height:460px;display:block}
 .umap-labels{display:flex;justify-content:center;gap:1rem;margin-top:1rem;flex-wrap:wrap}
@@ -311,22 +313,22 @@ footer{border-top:1px solid rgba(255,255,255,.06);padding:1.5rem 2.5rem;display:
 <section id="hero">
   <div class="hero-text">
     <h1>Decode <b>signalling</b><br>at single-cell resolution</h1>
-    <p class="sub">Unravel and understand signalling from your protein data! We extract, map, and interpret intracellular signalling programs from single-cell protein data &mdash; turning it into actionable pathway biology for drug discovery. 
-      By combining AI-driven and mechanistic models, we deliver explainable insight into the signalling mechanisms that drive each cell's behaviour within your protein data.
-      We are working with various protein measurement technologies to unravel signalling from bulk patient data or single-cell data.
-    </p>
-    <div class="ctas">
-      <a href="#contact" class="cta-p">Request a demo</a>
-      <a href="platform.html" class="cta-g">See the platform &rarr;</a>
-    </div>
+    <p class="lede">Make full use of your single-cell protein data &mdash; and understand how cell states shift signalling.</p>
   </div>
   <div id="flowWrap">
-    <p class="flow-caption">Differences in signalling drive cell fate &mdash; distinct clusters run distinct pathway programs. We recover those signalling differences for you, so you can understand drug effects at the signalling level and better predict potential targets by leveraging the flow of information through the network.</p>
     <canvas id="flowCanvas"></canvas>
     <div class="pathway-legend" style="margin-top:.7rem;margin-bottom:0">
       <div class="pleg"><div class="pl-g"></div><span style="color:var(--green)">Cluster A &mdash; MAPK / ERK branch</span></div>
       <div class="pleg"><div class="pl-b"></div><span style="color:var(--blue)">Cluster B &mdash; PI3K / AKT branch</span></div>
       <div class="pleg"><div class="pl-p"></div><span style="color:var(--purple)">Crosstalk between branches</span></div>
+    </div>
+  </div>
+  <p class="flow-caption">Differences in signalling drive cell fate &mdash; distinct clusters run distinct pathway programs. We recover those signalling differences for you, so you can understand drug effects at the signalling level and better predict potential targets by leveraging the flow of information through the network.</p>
+  <div class="pipeline-text">
+    <p class="sub"><b>Unravel and understand signalling from your protein data.</b> We extract, map, and interpret intracellular signalling programs from single-cell protein data &mdash; turning it into actionable pathway biology for drug discovery. By combining AI-driven and mechanistic models, we deliver explainable insight into the signalling mechanisms that drive each cell's behaviour within your protein data. We work across a range of protein-measurement technologies to unravel signalling from bulk patient data or single-cell data.</p>
+    <div class="ctas">
+      <a href="#contact" class="cta-p">Get in contact</a>
+      <a href="platform.html" class="cta-g">See pipeline &rarr;</a>
     </div>
   </div>
 </section>
