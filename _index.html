@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<title>SignallingIntelligence — Single-cell signalling analysis by Tim Stohn</title>
+<meta name="description" content="SignallingIntelligence, founded by Tim Stohn, decodes intracellular signalling at single-cell resolution — combining AI and mechanistic modelling to reveal drug effects and identify new therapeutic targets from single-cell protein data.">
+<meta name="author" content="Tim Stohn">
+<meta name="keywords" content="SignallingIntelligence, Signalling Intelligence, Tim Stohn, single-cell signalling, single-cell proteomics, phospho-seq, SIGNAL-seq, signalling pathway inference, drug target discovery">
+<link rel="canonical" href="https://signallingintelligence.com/">
+<meta name="robots" content="index, follow">
+
+<!-- Open Graph / social -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SignallingIntelligence">
+<meta property="og:title" content="SignallingIntelligence — Single-cell signalling analysis by Tim Stohn">
+<meta property="og:description" content="Decoding intracellular signalling at single-cell resolution. Founded by Tim Stohn — combining AI and mechanistic modelling to reveal drug effects and identify new therapeutic targets.">
+<meta property="og:url" content="https://signallingintelligence.com/">
+<meta property="og:image" content="https://signallingintelligence.com/Tim.jpeg">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SignallingIntelligence — Single-cell signalling analysis by Tim Stohn">
+<meta name="twitter:description" content="Decoding intracellular signalling at single-cell resolution. Founded by Tim Stohn.">
+<meta name="twitter:image" content="https://signallingintelligence.com/Tim.jpeg">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<!-- Structured data: helps Google connect "SignallingIntelligence" and "Tim Stohn" -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://signallingintelligence.com/#organization",
+      "name": "SignallingIntelligence",
+      "alternateName": "Signalling Intelligence",
+      "url": "https://signallingintelligence.com/",
+      "email": "info@signallingintelligence.com",
+      "logo": "https://signallingintelligence.com/Tim.jpeg",
+      "description": "SignallingIntelligence provides single-cell signalling analysis — combining AI and mechanistic modelling to reconstruct signal transduction and phosphoprotein networks from single-cell protein data, quantify drug-treatment effects, and identify new therapeutic targets.",
+      "knowsAbout": [
+        "single-cell signalling",
+        "single-cell proteomics",
+        "single-cell phosphoproteomics",
+        "phosphoprotein networks",
+        "signal transduction network inference",
+        "pathway inference",
+        "Phospho-seq",
+        "SIGNAL-seq",
+        "drug response",
+        "therapeutic target discovery"
+      ],
+      "areaServed": "Worldwide",
+      "founder": { "@id": "https://signallingintelligence.com/#tim-stohn" },
+      "employee": [
+        { "@id": "https://signallingintelligence.com/#tim-stohn" },
+        {
+          "@type": "Person",
+          "@id": "https://signallingintelligence.com/#ezgi-arslanturkoglu",
+          "name": "Ezgi Arslantürkoğlu",
+          "email": "e.arslanturkoglu@signallingintelligence.com",
+          "jobTitle": "Business Development & Partnerships",
+          "worksFor": { "@id": "https://signallingintelligence.com/#organization" },
+          "affiliation": "Leiden"
+        }
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://signallingintelligence.com/#tim-stohn",
+      "name": "Tim Stohn",
+      "email": "t.stohn@signallingintelligence.com",
+      "jobTitle": "Founder & Scientific Advisor",
+      "worksFor": { "@id": "https://signallingintelligence.com/#organization" },
+      "affiliation": "Leiden"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://signallingintelligence.com/#website",
+      "url": "https://signallingintelligence.com/",
+      "name": "SignallingIntelligence",
+      "publisher": { "@id": "https://signallingintelligence.com/#organization" }
+    },
+    {
+      "@type": "ScholarlyArticle",
+      "headline": "Reconstructing and comparing signal transduction networks from single-cell protein quantification data",
+      "url": "https://academic.oup.com/bioinformatics/article/42/1/btaf675/8403744",
+      "datePublished": "2026",
+      "isPartOf": { "@type": "Periodical", "name": "Bioinformatics" },
+      "author": [
+        { "@id": "https://signallingintelligence.com/#tim-stohn" },
+        { "@type": "Person", "name": "van Eijl" },
+        { "@type": "Person", "name": "Mulder" },
+        { "@type": "Person", "name": "Wessels" },
+        { "@type": "Person", "name": "Bosdriesz" }
+      ],
+      "about": ["single-cell signalling", "signal transduction networks", "phosphoprotein networks"]
+    },
+    {
+      "@type": "ScholarlyArticle",
+      "headline": "Cell-State-Specific Drug Responses are Associated With Differences in Signaling Network Wiring",
+      "url": "https://www.mcponline.org/article/S1535-9476(26)00025-3/fulltext",
+      "datePublished": "2026",
+      "isPartOf": { "@type": "Periodical", "name": "Molecular & Cellular Proteomics" },
+      "author": [
+        { "@type": "Person", "name": "Krämer" },
+        { "@type": "Person", "name": "van Eijl" },
+        { "@id": "https://signallingintelligence.com/#tim-stohn" },
+        { "@type": "Person", "name": "Mulder" }
+      ],
+      "about": ["single-cell proteomics", "drug response", "signalling network wiring"]
+    },
+    {
+      "@type": "ScholarlyArticle",
+      "headline": "ESGI: Efficient splitting of generic indices in single-cell sequencing data",
+      "url": "https://www.biorxiv.org/content/10.64898/2026.03.04.709594v1.abstract",
+      "datePublished": "2026",
+      "isPartOf": { "@type": "Periodical", "name": "bioRxiv" },
+      "author": [
+        { "@id": "https://signallingintelligence.com/#tim-stohn" },
+        { "@type": "Person", "name": "van de Brug" },
+        { "@type": "Person", "name": "Wessels" },
+        { "@type": "Person", "name": "Bosdriesz" }
+      ],
+      "about": ["single-cell sequencing", "barcode demultiplexing", "Phospho-seq", "SIGNAL-seq"]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://signallingintelligence.com/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is single-cell signalling analysis?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Single-cell signalling analysis measures and interprets intracellular signal transduction in individual cells. Instead of averaging across a population, SignallingIntelligence resolves how signalling pathways differ between cell states using single-cell protein and phosphoprotein data — showing what each cell is actually doing rather than only which genes are transcribed." }
+        },
+        {
+          "@type": "Question",
+          "name": "How do you infer signalling networks from single-cell proteomics data?",
+          "acceptedAnswer": { "@type": "Answer", "text": "We map co-varying protein and phosphoprotein measurements onto curated interaction databases such as SIGNOR and OmniPath to reconstruct active signal transduction and phosphoprotein networks. Our peer-reviewed pathway-inference method (Bioinformatics, 2026) reconstructs and compares these networks across cell states to reveal which signalling programs are active and how they are wired." }
+        },
+        {
+          "@type": "Question",
+          "name": "What are Phospho-seq and SIGNAL-seq?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Phospho-seq and SIGNAL-seq are single-cell technologies that jointly profile protein, phosphoprotein and transcriptomic readouts. Phosphorylation captures which proteins are switched on in real time — the live activity state of a signalling network — making single-cell phosphoproteomics a more direct readout of cell behaviour than scRNA-seq." }
+        },
+        {
+          "@type": "Question",
+          "name": "What do ESGI, ISFaN and LoCo do?",
+          "acceptedAnswer": { "@type": "Answer", "text": "ESGI handles combinatorial barcode demultiplexing for Phospho-seq and SIGNAL-seq. ISFaN performs cell-size normalisation, separating biological concentration from technical abundance. LoCo (local correlation) finds co-varying protein pairs within cell-state neighbourhoods, resolving relationships invisible to global correlation. Together they turn raw single-cell data into interpretable signalling programs." }
+        },
+        {
+          "@type": "Question",
+          "name": "How does single-cell phosphoproteomics reveal drug effects and new targets?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Drug response and resistance are driven by rewiring of signalling networks at the protein level, which is often invisible to transcriptomics. By quantifying phosphoprotein network activity across cell states, SignallingIntelligence identifies how a treatment changes signalling flow and pinpoints the nodes — potential therapeutic targets — that drive each cell's response." }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#07090d;--bg2:#0e1118;--bg3:#161b24;
+  --green:#3dffa0;--blue:#5b9cf6;--purple:#9b6dff;
+  --muted:#4a5568;--faint:#718096;--white:#e8edf5;
+  --mono:"JetBrains Mono",monospace;--sans:"Inter",system-ui,sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--white);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;height:64px;background:rgba(7,9,13,0.93);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.06)}
+.logo{display:flex;align-items:center;gap:.6rem;text-decoration:none}
+.logo img{height:40px;width:auto}
+.logo-text{font-family:var(--mono);font-size:14px;font-weight:500;color:var(--white);letter-spacing:.04em}
+.logo-text em{font-style:normal;color:var(--green)}
+.nav-r{display:flex;align-items:center;gap:2rem}
+.nav-r a{font-size:13px;color:var(--faint);text-decoration:none;transition:color .2s}
+.nav-r a:hover{color:var(--white)}
+.nav-btn{font-family:var(--mono);font-size:12px;color:var(--green);border:1px solid rgba(61,255,160,.3);padding:.4rem 1rem;border-radius:4px;text-decoration:none;letter-spacing:.04em;transition:background .2s}
+.nav-btn:hover{background:rgba(61,255,160,.08)}
+#hero{min-height:auto;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:92px 2rem 1.2rem;text-align:center}
+.hero-text{max-width:760px;margin:0 auto 2rem}
+.pill{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--mono);font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--green);background:rgba(61,255,160,.07);border:1px solid rgba(61,255,160,.2);padding:.3rem .9rem;border-radius:20px;margin-bottom:1.6rem}
+.pill::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--green);animation:blink 2s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+h1{font-size:clamp(2.2rem,5vw,4rem);font-weight:300;line-height:1.08;letter-spacing:-.03em;color:var(--white);margin-bottom:1.2rem}
+h1 b{font-weight:500;color:var(--green)}
+.sub{font-size:1rem;color:var(--faint);line-height:1.85;max-width:580px;margin:0 auto 2.4rem}
+.ctas{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap}
+.cta-p{font-family:var(--mono);font-size:13px;font-weight:500;background:var(--green);color:#040f08;padding:.72rem 1.8rem;border-radius:4px;text-decoration:none;transition:opacity .2s;letter-spacing:.04em}
+.cta-p:hover{opacity:.85}
+.cta-g{font-family:var(--mono);font-size:13px;color:var(--faint);border:1px solid rgba(255,255,255,.15);padding:.72rem 1.4rem;border-radius:4px;text-decoration:none;transition:color .2s,border-color .2s;letter-spacing:.04em}
+.cta-g:hover{color:var(--white);border-color:rgba(255,255,255,.35)}
+#flowWrap{width:100%;max-width:900px;margin:1.4rem auto 0;scroll-margin-top:80px}
+.flow-caption{font-size:.92rem;color:var(--faint);line-height:1.8;max-width:660px;margin:0 auto 1.4rem;text-align:center}
+.flow-caption b{color:var(--white);font-weight:500}
+#flowCanvas{width:100%;height:460px;display:block}
+.umap-labels{display:flex;justify-content:center;gap:1rem;margin-top:1rem;flex-wrap:wrap}
+.pop-card{display:flex;align-items:center;gap:.65rem;padding:.55rem 1.05rem;border-radius:8px;background:var(--bg2);border:1px solid rgba(255,255,255,.07)}
+.pop-card.g{border-color:rgba(61,255,160,.3)}
+.pop-card.b{border-color:rgba(91,156,246,.3)}
+.pop-card .pc-name{font-family:var(--mono);font-size:12.5px;letter-spacing:.05em;line-height:1.2}
+.pop-card.g .pc-name{color:var(--green)}
+.pop-card.b .pc-name{color:var(--blue)}
+.pop-card .pc-sub{font-size:11px;color:var(--faint);line-height:1.2;margin-top:2px}
+.umap-bridge{text-align:center;font-family:var(--mono);font-size:11px;color:var(--faint);letter-spacing:.03em;margin-top:1.1rem}
+.dot-g{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 7px var(--green)}
+.dot-b{width:8px;height:8px;border-radius:50%;background:var(--blue);box-shadow:0 0 7px var(--blue)}
+.section-header{text-align:center;margin-bottom:1.5rem}
+.sec-eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--green);opacity:.75;margin-bottom:.7rem}
+h2{font-size:clamp(1.6rem,3vw,2.4rem);font-weight:300;letter-spacing:-.025em;color:var(--white)}
+h2 b{font-weight:500}
+.sec-sub{font-size:.9rem;color:var(--faint);line-height:1.85;max-width:560px;margin:.7rem auto 2rem;text-align:center}
+.pathway-legend{display:flex;justify-content:center;gap:2.5rem;margin-bottom:1.5rem;flex-wrap:wrap}
+.pleg{font-family:var(--mono);font-size:11px;display:flex;align-items:center;gap:.5rem;color:var(--faint)}
+.pl-g{width:24px;height:2px;background:var(--green);border-radius:2px;box-shadow:0 0 5px var(--green)}
+.pl-b{width:24px;height:2px;background:var(--blue);border-radius:2px;box-shadow:0 0 5px var(--blue)}
+.pl-p{width:24px;height:2px;background:var(--purple);border-radius:2px;box-shadow:0 0 5px var(--purple)}
+.pl-d{width:24px;height:2px;background:rgba(255,255,255,.15);border-radius:2px}
+#features{padding:6rem 2rem;background:var(--bg)}
+.feat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;border:1px solid rgba(255,255,255,.06);background:rgba(255,255,255,.06);max-width:1100px;margin:0 auto}
+.feat{background:var(--bg);padding:2rem;transition:background .2s}
+.feat:hover{background:var(--bg2)}
+.feat-n{font-family:var(--mono);font-size:10px;color:var(--green);letter-spacing:.1em;margin-bottom:.9rem;opacity:.6}
+.feat-t{font-size:15px;font-weight:500;color:var(--white);margin-bottom:.5rem}
+.feat-d{font-size:13px;color:var(--muted);line-height:1.7}
+#why{padding:6rem 2rem;background:var(--bg3)}
+.why-inner{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center}
+.stat-stack{display:flex;flex-direction:column;gap:2rem}
+.stat-item{padding-left:1.2rem;border-left:2px solid rgba(61,255,160,.3)}
+.stat-n{font-family:var(--mono);font-size:2.2rem;font-weight:500;color:var(--green);line-height:1;margin-bottom:.3rem}
+.stat-l{font-size:13px;color:var(--muted);line-height:1.6}
+.why-point-t{font-family:var(--mono);font-size:13px;font-weight:500;color:var(--green);margin-bottom:.4rem;letter-spacing:.01em}
+#reading{padding:6rem 2rem;background:var(--bg)}
+.pub-list{max-width:820px;margin:1.5rem auto 0;display:flex;flex-direction:column;gap:.75rem}
+.pub{display:flex;align-items:center;gap:1.1rem;padding:1.05rem 1.3rem;background:var(--bg2);border:1px solid rgba(255,255,255,.07);border-radius:10px;text-decoration:none;transition:border-color .2s,background .2s}
+.pub:hover{border-color:rgba(61,255,160,.32);background:var(--bg3)}
+.pub-badge{font-family:var(--mono);font-size:10px;letter-spacing:.05em;text-transform:uppercase;color:var(--green);border:1px solid rgba(61,255,160,.25);padding:.35rem .55rem;border-radius:5px;white-space:nowrap}
+.pub-body{flex:1;min-width:0}
+.pub-t{font-size:14px;color:var(--white);line-height:1.4;margin-bottom:.22rem}
+.pub-m{font-family:var(--mono);font-size:11px;color:var(--faint)}
+.pub-arrow{color:var(--faint);font-size:16px;flex-shrink:0}
+.pub:hover .pub-arrow{color:var(--green)}
+#faq{padding:6rem 2rem;background:var(--bg3)}
+.faq-list{max-width:800px;margin:1.5rem auto 0;display:flex;flex-direction:column;gap:1px;border:1px solid rgba(255,255,255,.06);background:rgba(255,255,255,.06);border-radius:12px;overflow:hidden}
+.faq-item{background:var(--bg);padding:1.5rem 1.6rem}
+.faq-q{font-size:15px;font-weight:500;color:var(--white);margin-bottom:.55rem}
+.faq-a{font-size:13.5px;color:var(--muted);line-height:1.75}
+.faq-a b{color:var(--green);font-weight:500}
+.contact-card{max-width:560px;margin:1.8rem auto 0;background:var(--bg);border:1px solid rgba(255,255,255,.09);border-radius:16px;padding:2.1rem 1.8rem;display:flex;flex-direction:column;align-items:center}
+.avatar{width:108px;height:108px;border-radius:50%;object-fit:cover;border:2px solid rgba(61,255,160,.4);background:var(--bg2);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:30px;color:var(--green)}
+.contact-name{font-size:18px;font-weight:500;color:var(--white);margin-top:.9rem}
+.contact-role{font-size:13px;color:var(--faint);margin-top:.2rem;margin-bottom:1.3rem}
+.people{display:flex;gap:2rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.4rem}
+.person{display:flex;flex-direction:column;align-items:center;max-width:235px}
+.person .contact-role{margin-bottom:.55rem}
+.person .contact-name{margin-top:.3rem}
+.contact-title{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--green);margin-top:.85rem;line-height:1.35}
+.person-email{font-family:var(--mono);font-size:11px;color:var(--faint);text-decoration:none;word-break:break-word;line-height:1.4;transition:color .2s}
+.person-email:hover{color:var(--green)}
+.email-btn{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--mono);font-size:13px;color:var(--green);background:rgba(61,255,160,.08);border:1px solid rgba(61,255,160,.32);padding:.72rem 1.15rem;border-radius:9px;text-decoration:none;transition:background .2s,border-color .2s}
+.email-btn:hover{background:rgba(61,255,160,.16);border-color:rgba(61,255,160,.5)}
+.email-btn svg{flex-shrink:0}
+.copy-btn{background:none;border:none;color:var(--faint);font-family:var(--mono);font-size:11px;letter-spacing:.03em;cursor:pointer;margin-top:.85rem;transition:color .2s}
+.copy-btn:hover{color:var(--white)}
+#contact{padding:7rem 2rem;background:var(--bg2);text-align:center}
+.contact-inner{max-width:500px;margin:0 auto}
+.contact-inner h2{margin-bottom:.9rem}
+.contact-inner p{color:var(--faint);font-size:.9rem;line-height:1.85;margin-bottom:2rem}
+.cform{display:flex;gap:.6rem;max-width:380px;margin:0 auto .75rem}
+.cform input{flex:1;background:var(--bg);border:1px solid rgba(255,255,255,.13);color:var(--white);font-size:13px;padding:.65rem .9rem;border-radius:4px;outline:none;font-family:var(--sans);transition:border-color .2s}
+.cform input::placeholder{color:var(--muted)}
+.cform input:focus{border-color:rgba(61,255,160,.4)}
+.cnote{font-family:var(--mono);font-size:10px;color:var(--muted);letter-spacing:.05em}
+footer{border-top:1px solid rgba(255,255,255,.06);padding:1.5rem 2.5rem;display:flex;justify-content:space-between;align-items:center}
+.flogo{font-family:var(--mono);font-size:11px;color:var(--faint)}
+.flogo em{font-style:normal;color:var(--green)}
+.fcopy{font-size:11px;color:var(--muted)}
+@media(max-width:700px){.why-inner{grid-template-columns:1fr;gap:3rem}.nav-r a:not(.nav-btn){display:none}footer{flex-direction:column;gap:.75rem;text-align:center}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="#" class="logo">
+    <img src="data:image/png;base64,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" alt="SI">
+    <span class="logo-text">Signalling<em>Intelligence</em></span>
+  </a>
+  <div class="nav-r">
+    <a href="platform.html">Platform</a>
+    <a href="#features">Methods</a>
+    <a href="#why">Why us</a>
+    <a href="#reading">Research</a>
+    <a href="#faq">FAQ</a>
+    <a href="#contact" class="nav-btn">Get in touch</a>
+  </div>
+</nav>
+
+<section id="hero">
+  <div class="hero-text">
+    <h1>Decode <b>signalling</b><br>at single-cell resolution</h1>
+    <p class="sub">Unravel and understand signalling from your protein data! We extract, map, and interpret intracellular signalling programs from single-cell protein data &mdash; turning it into actionable pathway biology for drug discovery. 
+      By combining AI-driven and mechanistic models, we deliver explainable insight into the signalling mechanisms that drive each cell's behaviour within your protein data.
+      We are working with various protein measurement technologies to unravel signalling from bulk patient data or single-cell data.
+    </p>
+    <div class="ctas">
+      <a href="#contact" class="cta-p">Request a demo</a>
+      <a href="platform.html" class="cta-g">See the platform &rarr;</a>
+    </div>
+  </div>
+  <div id="flowWrap">
+    <p class="flow-caption">Differences in signalling drive cell fate &mdash; distinct clusters run distinct pathway programs. We recover those signalling differences for you, so you can understand drug effects at the signalling level and better predict potential targets by leveraging the flow of information through the network.</p>
+    <canvas id="flowCanvas"></canvas>
+    <div class="pathway-legend" style="margin-top:.7rem;margin-bottom:0">
+      <div class="pleg"><div class="pl-g"></div><span style="color:var(--green)">Cluster A &mdash; MAPK / ERK branch</span></div>
+      <div class="pleg"><div class="pl-b"></div><span style="color:var(--blue)">Cluster B &mdash; PI3K / AKT branch</span></div>
+      <div class="pleg"><div class="pl-p"></div><span style="color:var(--purple)">Crosstalk between branches</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="features">
+  <div class="feat-grid">
+    <div class="feat"><div class="feat-n">01 / DEMUX</div><div class="feat-t">Processing of raw sequncing data</div><div class="feat-d">We use our own demultiplexing platform (ESGI, see papers below), which handles any barcoded single-cell sequencing technology with enhanced read-recovery accuracy and detailed error reports for fine-tuning experimental design.</div></div>
+    <div class="feat"><div class="feat-n">02 / NORM</div><div class="feat-t">Normalisation of single-cell count data</div><div class="feat-d">We use our own state-of-the-art normalization method. It mayorly improves normalization comapred to current normalization standards and separates biological concentration from technical abundance &mdash; correcting library size and cell-size variation simultaneously.</div></div>
+    <div class="feat"><div class="feat-n">03 / CORR</div><div class="feat-t">Local correlation analysis</div><div class="feat-d">We use our own tool LoCo (Local Correlation) to find locally co-varying protein pairs within cell-state neighbourhoods, resolving relationships invisible to global correlation methods. These interpretable patterns are used in our own AI-model to make further predictions on cell-state specific signalling cahnges. </div></div>
+    <div class="feat"><div class="feat-n">04 / NET</div><div class="feat-t">Pathway inference</div><div class="feat-d">Correlation programs are inferred per population with scCNR/scMRA (see papers below). This algorithm then gives us mechanistic insight into cell-state specific signalling networks. This insight is then further analyzed by our own AI platform to give further insight into the signalling networks on the single-cell level.</div></div>
+  </div>
+</section>
+
+<section id="why">
+  <div class="why-inner">
+    <div>
+      <div class="sec-eyebrow" style="text-align:left;margin-bottom:.75rem">Why phosphoproteomics</div>
+      <h2 style="text-align:left">Transcriptomics tells you what genes are on.<br><b>We tell you what the cell is doing.</b></h2>
+      <p style="color:var(--faint);font-size:.9rem;line-height:1.85;margin-top:1rem">Proteins are where biology actually happens &mdash; they are the enzymes, receptors, and machines that carry out a cell's decisions. Messenger RNA is only a blueprint, and it is a famously unreliable one: transcript levels correlate weakly with the amount of protein that is finally made, so an mRNA readout is a proxy for a proxy.</p>
+      <p style="color:var(--faint);font-size:.9rem;line-height:1.85;margin-top:1rem">Phosphorylation goes one step further. It captures which proteins are switched <em>on</em> right now &mdash; the live activity state of a signalling network, minutes ahead of any change in gene expression. That makes single-cell proteomics a far more truthful readout of what a cell is doing than scRNA-seq can ever be.</p>
+    </div>
+    <div class="stat-stack">
+      <div class="stat-item"><div class="why-point-t">A proxy vs. the actor</div><div class="stat-l">mRNA abundance predicts protein levels poorly. The phosphoproteome measures the functional molecules themselves, not a transcriptional guess at them.</div></div>
+      <div class="stat-item"><div class="why-point-t">Activity, not just presence</div><div class="stat-l">Phosphorylation reports kinase signalling state in real time &mdash; the difference between a protein being present and a pathway being active.</div></div>
+      <div class="stat-item"><div class="why-point-t">Closer to the phenotype</div><div class="stat-l">The signalling rewiring that drives drug response plays out at the protein level, often completely invisible to transcriptomics.</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="reading">
+  <div class="section-header">
+    <div class="sec-eyebrow">Further reading</div>
+    <h2>Scientific papers</h2>
+    <p class="sec-sub"> The SignallingIntelligence (SI) platform grew out of Tim Stohn's PhD thesis, which produced a suite of tools for analyzing single-cell phosphoprotein data. 
+      SI builds on this foundation by combining several peer-reviewed tools — which generate mechanistic input — with AI-driven models that refine our understanding of signalling, 
+      without sacrificing the interpretability of the mechanistic insight. Here you can find peer-reviewed methods and preprints behind our demultiplexing, normalisation, and signalling-network inference methods.</p>
+  </div>
+  <div class="pub-list">
+    <a class="pub" href="https://academic.oup.com/bioinformatics/article/42/1/btaf675/8403744" target="_blank" rel="noopener">
+      <span class="pub-badge">Bioinformatics</span>
+      <div class="pub-body">
+        <div class="pub-t"> Our pathway inference method &mdash; Reconstructing and comparing signal transduction networks from single-cell protein quantification data</div>
+        <div class="pub-m">Stohn, van Eijl, Mulder, Wessels &amp; Bosdriesz &middot; Bioinformatics &middot; 2026</div>
+      </div>
+      <span class="pub-arrow">&rarr;</span>
+    </a>
+    <a class="pub" href="https://www.mcponline.org/article/S1535-9476(26)00025-3/fulltext" target="_blank" rel="noopener">
+      <span class="pub-badge">Mol&nbsp;Cell&nbsp;Proteomics</span>
+      <div class="pub-body">
+        <div class="pub-t"> Application example of our pathway inference method  &mdash; Cell-State-Specific Drug Responses are Associated With Differences in Signaling Network Wiring </div>
+        <div class="pub-m"> Krämer, van Eijl, Stohn, Tanis,  Wessels3, Bosdriesz, Mulder    &middot;     Molecular &amp; Cellular Proteomics &middot; 2026</div>
+      </div>
+      <span class="pub-arrow">&rarr;</span>
+    </a>
+    <a class="pub" href="https://www.biorxiv.org/content/10.64898/2026.03.04.709594v1.abstract" target="_blank" rel="noopener">
+      <span class="pub-badge">Preprint &middot; bioRxiv</span>
+      <div class="pub-body">
+        <div class="pub-t">Our generic sequencing processing tool &mdash; ESGI: Efficient splitting of generic indices in single-cell sequencing data </div>
+        <div class="pub-m"> Stohn, van de Brug, Theodosiadou, Thijjssen, Jastrzebski, Wessels, Bosdriesz &middot; bioRxiv &middot; 2026</div>
+      </div>
+      <span class="pub-arrow">&rarr;</span>
+    </a>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="section-header">
+    <div class="sec-eyebrow">FAQ</div>
+    <h2>Single-cell <b>signalling</b>, explained</h2>
+    <p class="sec-sub">Common questions about single-cell signalling analysis, phosphoprotein network inference, and how SignallingIntelligence turns single-cell proteomics into actionable pathway biology.</p>
+  </div>
+  <div class="faq-list">
+    <div class="faq-item">
+      <div class="faq-q">What is single-cell signalling analysis?</div>
+      <div class="faq-a">Single-cell signalling analysis measures and interprets intracellular <b>signal transduction</b> in individual cells. Instead of averaging across a whole population, SignallingIntelligence resolves how <b>signalling pathways</b> differ between cell states using single-cell protein and phosphoprotein data &mdash; showing what each cell is actually doing, not just which genes are transcribed.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How do you infer signalling networks from single-cell proteomics data?</div>
+      <div class="faq-a">We map co-varying protein and phosphoprotein measurements onto curated interaction databases such as <b>SIGNOR</b> and <b>OmniPath</b> to reconstruct active <b>signal transduction and phosphoprotein networks</b>. Our peer-reviewed pathway-inference method (Bioinformatics, 2026) reconstructs and compares these networks across cell states to reveal which signalling programs are active and how they are wired.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What are Phospho-seq and SIGNAL-seq?</div>
+      <div class="faq-a"><b>Phospho-seq</b> and <b>SIGNAL-seq</b> are single-cell technologies that jointly profile protein, phosphoprotein and transcriptomic readouts. Phosphorylation captures which proteins are switched <em>on</em> in real time &mdash; the live activity state of a signalling network &mdash; making <b>single-cell phosphoproteomics</b> a more direct readout of cell behaviour than scRNA-seq.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What do our tools do?</div>
+      <div class="faq-a"><b>ESGI</b> handles combinatorial barcode demultiplexing for single-cell (phospho)protein data, but can be applied to any sequencing based barcoded data like spatial data, etc. , <b>LoCo</b> (local correlation) finds co-varying protein pairs within cell-state neighbourhoods, resolving relationships invisible to global correlation. Together they turn raw single-cell data into interpretable signalling programs.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How does single-cell phosphoproteomics reveal drug effects and new targets?</div>
+      <div class="faq-a">Drug response and resistance are driven by rewiring of <b>signalling networks</b> at the protein level, which is often invisible to transcriptomics. By quantifying phosphoprotein network activity across cell states, we identify how a treatment changes signalling flow and pinpoint the nodes &mdash; potential <b>therapeutic targets</b> &mdash; that drive each cell's response.</div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="contact-inner">
+    <div class="sec-eyebrow" style="margin-bottom:.75rem">Get in touch</div>
+    <h2>Let's make sense of<br><b>your dataset</b></h2>
+    <p>Want to decode signalling in your single-cell data? Reach out to see how our platform can help you disentangle signalling effects at the single-cell level.</p>
+    <div class="contact-card">
+      <div class="people">
+        <div class="person">
+          <img class="avatar" src="Tim.jpeg" alt="Tim Stohn"
+               onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'avatar',textContent:'TS'}))">
+          <div class="contact-title">Scientific Advisor</div>
+          <div class="contact-name">Tim Stohn</div>
+          <div class="contact-role">SignallingIntelligence &middot; Leiden</div>
+          <a class="person-email" href="mailto:t.stohn@signallingintelligence.com">t.stohn@signallingintelligence.com</a>
+        </div>
+        <div class="person">
+          <img class="avatar" src="Ezgi.jpeg" alt="Ezgi Arslantürkoğlu"
+               onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'avatar',textContent:'EA'}))">
+          <div class="contact-title">Business Development &amp; Partnerships</div>
+          <div class="contact-name">Ezgi Arslantürkoğlu</div>
+          <div class="contact-role">SignallingIntelligence &middot; Leiden</div>
+          <a class="person-email" href="mailto:e.arslanturkoglu@signallingintelligence.com">e.arslanturkoglu@signallingintelligence.com</a>
+        </div>
+      </div>
+      <a class="email-btn" href="mailto:info@signallingintelligence.com">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+        info@signallingintelligence.com
+      </a>
+      <button class="copy-btn" type="button"
+              onclick="navigator.clipboard&amp;&amp;navigator.clipboard.writeText('info@signallingintelligence.com');this.textContent='Copied &#10003;';setTimeout(()=>this.textContent='Copy address',1500)">Copy address</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="flogo">Signalling<em>Intelligence</em></div>
+  <div class="fcopy">&copy; 2026 SignallingIntelligence</div>
+</footer>
+
+<script>
+const DPR = window.devicePixelRatio || 1;
+const CV = document.getElementById('flowCanvas');
+const cx = CV.getContext('2d');
+const CH = 460;                       // canvas CSS height
+function rsz() {
+  const r = CV.parentElement.getBoundingClientRect();
+  const w = Math.min(r.width, 900);
+  CV.width = w * DPR; CV.height = CH * DPR;
+  CV.style.width = w + 'px'; CV.style.height = CH + 'px';
+}
+rsz(); window.addEventListener('resize', rsz);
+function W() { return CV.width / DPR; }
+function H() { return CV.height / DPR; }
+function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
+function ease(t) { return t < .5 ? 2*t*t : -1+(4-2*t)*t; }
+
+// ═══════════════════════════════════════════════
+// Cell particles: whirlpool → 2 clusters → recede to header badges
+// ═══════════════════════════════════════════════
+const N = 240;
+const pts = [];
+const CLUSTER = [{x:0.34,y:0.46},{x:0.66,y:0.46}];    // prominent clustering blobs
+const BADGE   = [{x:0.145,y:0.11},{x:0.855,y:0.11}];  // compact header badges (top corners)
+for (let i = 0; i < N; i++) {
+  const cl = i < N * 0.46 ? 0 : 1;
+  const oa = Math.random() * Math.PI * 2;
+  const orr = Math.pow(Math.random(), 0.45);
+  const skewX = cl === 0 ? 1.0 : 1.12, skewY = cl === 0 ? 0.9 : 0.8;
+  const a2 = Math.random() * Math.PI * 2, r2 = 0.05 + Math.random() * 0.33;
+  pts.push({
+    cl, oa, orr,
+    sx: 0.5 + Math.cos(a2) * r2, sy: 0.46 + Math.sin(a2) * r2 * 0.6,
+    blobX: CLUSTER[cl].x + Math.cos(oa) * orr * 0.135 * skewX,
+    blobY: CLUSTER[cl].y + Math.sin(oa) * orr * 0.125 * skewY,
+    badgeX: BADGE[cl].x + Math.cos(oa) * orr * 0.052,
+    badgeY: BADGE[cl].y + Math.sin(oa) * orr * 0.052 * 1.1,
+    x: 0, y: 0,
+    r: 1.6 + Math.random() * 3,
+    op: 0.45 + Math.random() * 0.5,
+    wA: Math.random() * Math.PI * 2,
+    wS: 0.005 + Math.random() * 0.012,
+    ph: Math.random() * Math.PI * 2,
+  });
+}
+
+// ═══════════════════════════════════════════════
+// Signalling network (EGFR): only nodes that carry signal
+// ═══════════════════════════════════════════════
+const NODES = [
+  {id:'EGFR',x:.50,y:.06,r:22,lbl:'EGFR'},
+  {id:'GRB2',x:.33,y:.19,r:14,lbl:'GRB2'},
+  {id:'SOS', x:.19,y:.33,r:13,lbl:'SOS'},
+  {id:'RAS', x:.50,y:.21,r:19,lbl:'RAS'},
+  {id:'PI3K',x:.68,y:.19,r:15,lbl:'PI3K'},
+  {id:'RAF', x:.36,y:.38,r:15,lbl:'RAF'},
+  {id:'AKT', x:.71,y:.36,r:15,lbl:'AKT'},
+  {id:'MEK', x:.29,y:.55,r:15,lbl:'MEK'},
+  {id:'mTOR',x:.65,y:.55,r:14,lbl:'mTOR'},
+  {id:'ERK', x:.29,y:.72,r:15,lbl:'ERK'},
+  {id:'S6K', x:.65,y:.72,r:13,lbl:'pS6K'},
+  {id:'RSK', x:.14,y:.88,r:13,lbl:'RSK'},
+  {id:'MYC', x:.43,y:.88,r:13,lbl:'cMYC'},
+  {id:'4EBP',x:.79,y:.87,r:12,lbl:'4EBP'},
+];
+const EDGES = [
+  {f:'EGFR',t:'GRB2',role:'A'},
+  {f:'EGFR',t:'RAS', role:'both'},
+  {f:'EGFR',t:'PI3K',role:'B'},
+  {f:'GRB2',t:'SOS', role:'A'},
+  {f:'SOS', t:'RAS', role:'A'},
+  {f:'RAS', t:'RAF', role:'A'},
+  {f:'RAS', t:'PI3K',role:'B'},
+  {f:'PI3K',t:'AKT', role:'B'},
+  {f:'RAF', t:'MEK', role:'A'},
+  {f:'AKT', t:'mTOR',role:'B'},
+  {f:'AKT', t:'MEK', role:'cross'},
+  {f:'MEK', t:'ERK', role:'A'},
+  {f:'mTOR',t:'S6K', role:'B'},
+  {f:'mTOR',t:'4EBP',role:'B'},
+  {f:'ERK', t:'RSK', role:'A'},
+  {f:'ERK', t:'MYC', role:'A'},
+  {f:'ERK', t:'mTOR',role:'cross'},
+];
+const ACTIVE_IDS = new Set();
+EDGES.forEach(e => { if (e.role !== 'inh') { ACTIVE_IDS.add(e.f); ACTIVE_IDS.add(e.t); } });
+const VNODES = NODES.filter(n => ACTIVE_IDS.has(n.id));
+const VEDGES = EDGES.filter(e => e.role !== 'inh' && ACTIVE_IDS.has(e.f) && ACTIVE_IDS.has(e.t));
+
+function gn(id) { return NODES.find(n => n.id === id); }
+// map node coords into the network band that sits below the header/badges
+function nx(n) { return (0.045 + n.x * 0.91) * W(); }
+function ny(n) { return (0.20 + n.y * 0.76) * H(); }
+function np(n) { return {x: nx(n), y: ny(n)}; }
+function rr(x,y,w,h,rad){ctx_rr(x,y,w,h,rad);}
+function ctx_rr(x,y,w,h,r){cx.beginPath();cx.moveTo(x+r,y);cx.arcTo(x+w,y,x+w,y+h,r);cx.arcTo(x+w,y+h,x,y+h,r);cx.arcTo(x,y+h,x,y,r);cx.arcTo(x,y,x+w,y,r);cx.closePath();}
+
+function mkStreams(roles, spd, col) {
+  return VEDGES.filter(e => roles.includes(e.role)).map(e => ({
+    e, col,
+    parts: [Math.random(), (Math.random() * 0.4 + 0.5) % 1].map(t => ({t})),
+    spd: spd * (0.82 + Math.random() * 0.36),
+  }));
+}
+const sA = mkStreams(['A','both'], 0.0048, '61,255,160');
+const sB = mkStreams(['B','both'], 0.0042, '91,156,246');
+const sC = mkStreams(['cross'],    0.003,  '155,109,255');
+const glow = {};
+NODES.forEach(n => { glow[n.id] = {g:0,b:0,p:0}; });
+
+// ── cluster territories (Cluster A = MAPK left, Cluster B = PI3K right) ──
+function drawTerritories(alpha) {
+  cx.globalAlpha = alpha;
+  const w = W(), h = H();
+  const top = h*0.045, bh = h*0.945;
+  const lx = w*0.01, lw = w*0.478 - lx;
+  const rx = w*0.522, rw = w*0.99 - rx;
+
+  const lg = cx.createLinearGradient(lx,0,lx+lw,0);
+  lg.addColorStop(0,'rgba(61,255,160,0.055)'); lg.addColorStop(1,'rgba(61,255,160,0.012)');
+  ctx_rr(lx,top,lw,bh,14); cx.fillStyle=lg; cx.fill();
+  cx.strokeStyle='rgba(61,255,160,0.15)'; cx.lineWidth=1; cx.setLineDash([5,6]); cx.stroke(); cx.setLineDash([]);
+
+  const rg = cx.createLinearGradient(rx,0,rx+rw,0);
+  rg.addColorStop(0,'rgba(91,156,246,0.012)'); rg.addColorStop(1,'rgba(91,156,246,0.055)');
+  ctx_rr(rx,top,rw,bh,14); cx.fillStyle=rg; cx.fill();
+  cx.strokeStyle='rgba(91,156,246,0.15)'; cx.lineWidth=1; cx.setLineDash([5,6]); cx.stroke(); cx.setLineDash([]);
+  cx.globalAlpha = 1;
+}
+
+// header labels sit next to the receded cluster badges
+function drawHeaders(alpha) {
+  cx.globalAlpha = alpha;
+  const w = W(), h = H();
+  const ly = BADGE[0].y * h, ry = BADGE[1].y * h;
+  cx.textBaseline = 'middle';
+  cx.textAlign = 'left';
+  cx.font = '600 13px "JetBrains Mono",monospace'; cx.fillStyle = 'rgba(61,255,160,0.9)';
+  cx.fillText('CLUSTER A', BADGE[0].x*w + 30, ly - 6);
+  cx.font = '400 10.5px "Inter",sans-serif'; cx.fillStyle = 'rgba(120,200,170,0.6)';
+  cx.fillText('MAPK / ERK cascade', BADGE[0].x*w + 30, ly + 10);
+  cx.textAlign = 'right';
+  cx.font = '600 13px "JetBrains Mono",monospace'; cx.fillStyle = 'rgba(91,156,246,0.9)';
+  cx.fillText('CLUSTER B', BADGE[1].x*w - 30, ry - 6);
+  cx.font = '400 10.5px "Inter",sans-serif'; cx.fillStyle = 'rgba(130,170,220,0.6)';
+  cx.fillText('PI3K / AKT axis', BADGE[1].x*w - 30, ry + 10);
+  cx.globalAlpha = 1;
+}
+
+function drawEdges(alpha) {
+  cx.globalAlpha = alpha;
+  VEDGES.forEach(e => {
+    const a = gn(e.f), b = gn(e.t);
+    const pa = np(a), pb = np(b);
+    const dx = pb.x-pa.x, dy = pb.y-pa.y;
+    const len = Math.sqrt(dx*dx+dy*dy) || 1;
+    const ux_ = dx/len, uy_ = dy/len;
+    const sx = pa.x + ux_*a.r, sy = pa.y + uy_*a.r;
+    const ex = pb.x - ux_*b.r, ey = pb.y - uy_*b.r;
+    const colMap = {A:'rgba(61,255,160,.16)',B:'rgba(91,156,246,.16)',
+                    both:'rgba(150,230,200,.13)',cross:'rgba(155,109,255,.15)'};
+    cx.beginPath(); cx.moveTo(sx,sy); cx.lineTo(ex,ey);
+    cx.strokeStyle = colMap[e.role] || 'rgba(255,255,255,.08)';
+    cx.lineWidth = 1.2; cx.stroke();
+    const aw = 4;
+    cx.beginPath(); cx.moveTo(ex,ey);
+    cx.lineTo(ex-uy_*aw-ux_*6, ey+ux_*aw-uy_*6);
+    cx.lineTo(ex+uy_*aw-ux_*6, ey-ux_*aw-uy_*6);
+    cx.closePath(); cx.fillStyle = colMap[e.role]; cx.fill();
+  });
+  cx.globalAlpha = 1;
+}
+
+function drawStreams(streams, alpha) {
+  streams.forEach(s => {
+    const a = gn(s.e.f), b = gn(s.e.t);
+    const pa = np(a), pb = np(b);
+    const dx = pb.x-pa.x, dy = pb.y-pa.y;
+    const len = Math.sqrt(dx*dx+dy*dy) || 1;
+    const ux_ = dx/len, uy_ = dy/len;
+    const ax = pa.x+ux_*a.r, ay = pa.y+uy_*a.r;
+    const bx = pb.x-ux_*b.r, by = pb.y-uy_*b.r;
+    const ex = bx-ax, ey = by-ay;
+    const key = s.col === '61,255,160' ? 'g' : s.col === '91,156,246' ? 'b' : 'p';
+    s.parts.forEach(p => {
+      p.t += s.spd; if (p.t > 1) p.t -= 1;
+      const tail = 0.55, head = p.t, t0 = Math.max(0, head - tail);
+      const hx = ax+ex*head, hy = ay+ey*head;
+      const tx = ax+ex*t0,   ty = ay+ey*t0;
+      const edgeFade = Math.min(1, head/0.12) * Math.min(1, (1-head)/0.12 + 0.15) * alpha;
+      for (const [w, al] of [[9,0.05],[4.5,0.13],[1.8,0.85]]) {
+        const g = cx.createLinearGradient(tx,ty,hx,hy);
+        g.addColorStop(0,   `rgba(${s.col},0)`);
+        g.addColorStop(0.7, `rgba(${s.col},${al*0.3*edgeFade})`);
+        g.addColorStop(1,   `rgba(${s.col},${al*edgeFade})`);
+        cx.beginPath(); cx.moveTo(tx,ty); cx.lineTo(hx,hy);
+        cx.strokeStyle = g; cx.lineWidth = w; cx.lineCap = 'round'; cx.stroke();
+      }
+      if (glow[s.e.f]) glow[s.e.f][key] = Math.min(1, (glow[s.e.f][key]||0) + 0.14*edgeFade);
+      if (glow[s.e.t]) glow[s.e.t][key] = Math.min(1, (glow[s.e.t][key]||0) + head * 0.7 * edgeFade);
+    });
+  });
+}
+
+function drawNodes(alpha) {
+  cx.globalAlpha = alpha;
+  VNODES.forEach(n => {
+    const p = np(n);
+    const gl = glow[n.id];
+    const hasG = gl.g > .08, hasB = gl.b > .08, hasP = gl.p > .08;
+    if (hasG) {
+      const og = cx.createRadialGradient(p.x,p.y,n.r,p.x,p.y,n.r+18);
+      og.addColorStop(0,`rgba(61,255,160,${gl.g*.3})`); og.addColorStop(1,'rgba(61,255,160,0)');
+      cx.beginPath(); cx.arc(p.x,p.y,n.r+18,0,Math.PI*2); cx.fillStyle=og; cx.fill();
+    }
+    if (hasB) {
+      const og = cx.createRadialGradient(p.x,p.y,n.r,p.x,p.y,n.r+18);
+      og.addColorStop(0,`rgba(91,156,246,${gl.b*.3})`); og.addColorStop(1,'rgba(91,156,246,0)');
+      cx.beginPath(); cx.arc(p.x,p.y,n.r+18,0,Math.PI*2); cx.fillStyle=og; cx.fill();
+    }
+    const fill = hasG&&hasB?'rgba(80,215,195,.18)':hasG?'rgba(61,255,160,.15)':
+                 hasB?'rgba(91,156,246,.15)':hasP?'rgba(155,109,255,.12)':'rgba(18,23,32,.95)';
+    const stroke = hasG&&hasB?'rgba(120,245,215,.85)':hasG?'rgba(61,255,160,.82)':
+                   hasB?'rgba(91,156,246,.82)':hasP?'rgba(155,109,255,.65)':
+                   n.id==='EGFR'?'rgba(255,255,255,.42)':'rgba(255,255,255,.11)';
+    cx.beginPath(); cx.arc(p.x,p.y,n.r,0,Math.PI*2);
+    cx.fillStyle=fill; cx.strokeStyle=stroke;
+    cx.lineWidth=hasG||hasB?1.6:.7; cx.fill(); cx.stroke();
+    const fs = Math.max(8, n.r * 0.52);
+    cx.font = `500 ${fs}px "JetBrains Mono",monospace`;
+    const tc = hasG&&hasB?'rgba(160,248,225,1)':hasG?'rgba(61,255,160,1)':
+               hasB?'rgba(91,156,246,1)':hasP?'rgba(155,109,255,.9)':'rgba(238,240,244,.3)';
+    cx.fillStyle=tc; cx.textAlign='center'; cx.textBaseline='middle';
+    cx.fillText(n.lbl, p.x, p.y);
+  });
+  cx.globalAlpha = 1;
+}
+
+function drawParticles(cp, mp) {
+  const w = W(), h = H();
+  // faint intra-cluster web while cells are grouped, fading as the network takes over
+  if (cp > 0.5 && mp < 1) {
+    const la = (cp - 0.5) / 0.5 * (1 - mp);
+    for (let i = 0; i < N; i++) {
+      for (let j = i+1; j < N; j++) {
+        if (pts[i].cl !== pts[j].cl) continue;
+        const dx = (pts[i].x - pts[j].x) * w, dy = (pts[i].y - pts[j].y) * h;
+        const d = Math.sqrt(dx*dx + dy*dy);
+        if (d < 34) {
+          const col = pts[i].cl === 0 ? '61,255,160' : '91,156,246';
+          cx.beginPath();
+          cx.moveTo(pts[i].x*w, pts[i].y*h); cx.lineTo(pts[j].x*w, pts[j].y*h);
+          cx.strokeStyle = `rgba(${col},${0.10 * la * (1 - d/34)})`;
+          cx.lineWidth = 0.7; cx.stroke();
+        }
+      }
+    }
+  }
+  pts.forEach(p => {
+    p.wA += p.wS; p.ph += 0.03;
+    let X, Y;
+    if (cp <= 0) {
+      const orb = 0.06 + 0.25 * (1 - clamp(T / SWIRL, 0, 1) * 0.4);
+      const spd = T * p.wS * 72 + p.wA;
+      p.sx += (0.5 + Math.cos(spd) * orb - p.sx) * 0.05;
+      p.sy += (0.46 + Math.sin(spd) * orb * 0.6 - p.sy) * 0.05;
+      X = p.sx; Y = p.sy;
+    } else if (mp <= 0) {
+      const e = ease(cp);
+      const wob = mp; // 0 here
+      X = p.sx + (p.blobX - p.sx) * e;
+      Y = p.sy + (p.blobY - p.sy) * e;
+    } else {
+      const e = ease(mp);
+      X = p.blobX + (p.badgeX - p.blobX) * e;
+      Y = p.blobY + (p.badgeY - p.blobY) * e;
+    }
+    p.x = X; p.y = Y;
+    const pr = p.r * (1 + 0.07 * Math.sin(p.ph)) * (1 - mp * 0.5);
+    const col = p.cl === 0 ? '61,255,160' : '91,156,246';
+    const al = p.op * (1 - mp * 0.78) * (cp <= 0 ? 0.7 : 1);
+    cx.beginPath(); cx.arc(X * w, Y * h, Math.max(0.4, pr), 0, Math.PI * 2);
+    cx.fillStyle = `rgba(${col},${al})`; cx.fill();
+  });
+}
+
+// ═══════════════════════════════════════════════
+// Timeline: swirl → cluster → hold → morph into network
+// ═══════════════════════════════════════════════
+let T = 0;
+const SWIRL = 2.0, CLUSTER_END = 3.3, HOLD_END = 4.0, MORPH_END = 5.3, LOOP_END = 13.0;
+
+function scatter() {
+  pts.forEach(p => {
+    const a = Math.random()*Math.PI*2, r = 0.05 + Math.random()*0.33;
+    p.sx = 0.5 + Math.cos(a)*r; p.sy = 0.46 + Math.sin(a)*r*0.6;
+  });
+}
+
+function frame() {
+  if (W() === 0) rsz();                       // guard against a 0-width first layout
+  if (T < MORPH_END) T += 1/60;               // whirl → cluster → network, then hold (streams keep flowing); reload to replay
+  cx.setTransform(DPR, 0, 0, DPR, 0, 0);
+  cx.clearRect(0, 0, W(), H());
+
+  const cp = clamp((T - SWIRL) / (CLUSTER_END - SWIRL), 0, 1);
+  const mp = clamp((T - HOLD_END) / (MORPH_END - HOLD_END), 0, 1);
+  const netProg = mp;
+
+  // network fades in behind the receding cells
+  if (netProg > 0.001) {
+    NODES.forEach(n => { glow[n.id] = {g:0,b:0,p:0}; });
+    drawTerritories(netProg);
+    drawEdges(netProg);
+    cx.globalCompositeOperation = 'lighter'; cx.globalAlpha = netProg;
+    drawStreams(sA, 1); drawStreams(sB, 1); drawStreams(sC, 1);
+    cx.globalAlpha = 1; cx.globalCompositeOperation = 'source-over';
+    drawNodes(netProg);
+  }
+
+  // cells: whirlpool → clusters → recede to header badges (stay as faint background)
+  drawParticles(cp, mp);
+
+  // cluster headers appear as the cells settle into the badges
+  if (netProg > 0.001) drawHeaders(netProg);
+
+  requestAnimationFrame(frame);
+}
+window.addEventListener('load', rsz);
+requestAnimationFrame(frame);
+</script>
+</body>
+</html>
