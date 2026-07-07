@@ -319,9 +319,8 @@ footer{border-top:1px solid rgba(255,255,255,.06);padding:1.5rem 2.5rem;display:
   <div id="flowWrap">
     <canvas id="flowCanvas"></canvas>
     <div class="pathway-legend" style="margin-top:.7rem;margin-bottom:0">
-      <div class="pleg"><div class="pl-g"></div><span style="color:var(--green)">Cluster A &mdash; MAPK / ERK branch</span></div>
-      <div class="pleg"><div class="pl-b"></div><span style="color:var(--blue)">Cluster B &mdash; PI3K / AKT branch</span></div>
-      <div class="pleg"><div class="pl-p"></div><span style="color:var(--purple)">Crosstalk between branches</span></div>
+      <div class="pleg"><div class="pl-g"></div><span style="color:var(--green)">Cluster A &mdash; (dominant in MAPK branch) </span></div>
+      <div class="pleg"><div class="pl-b"></div><span style="color:var(--blue)">Cluster B &mdash; (dominant in PI3K / AKT branch) </span></div>
     </div>
   </div>
   <p class="flow-caption">Differences in signalling drive cell fate &mdash; distinct clusters run distinct pathway programs. We recover those signalling differences for you, so you can understand drug effects at the signalling level and better predict potential targets by leveraging the flow of information through the network.</p>
@@ -565,18 +564,33 @@ const EDGES = [
   {f:'PI3K',t:'AKT', role:'B'},
   {f:'RAF', t:'MEK', role:'A'},
   {f:'AKT', t:'mTOR',role:'B'},
-  {f:'AKT', t:'MEK', role:'cross'},
+  {f:'AKT', t:'MEK', role:'B'},
   {f:'MEK', t:'ERK', role:'A'},
   {f:'mTOR',t:'S6K', role:'B'},
   {f:'mTOR',t:'4EBP',role:'B'},
-  {f:'ERK', t:'RSK', role:'A'},
-  {f:'ERK', t:'MYC', role:'A'},
-  {f:'ERK', t:'mTOR',role:'cross'},
+  {f:'ERK', t:'RSK', role:'both'},
+  {f:'ERK', t:'MYC', role:'both'},
+  {f:'mTOR',t:'ERK', role:'B'},
 ];
 const ACTIVE_IDS = new Set();
 EDGES.forEach(e => { if (e.role !== 'inh') { ACTIVE_IDS.add(e.f); ACTIVE_IDS.add(e.t); } });
 const VNODES = NODES.filter(n => ACTIVE_IDS.has(n.id));
 const VEDGES = EDGES.filter(e => e.role !== 'inh' && ACTIVE_IDS.has(e.f) && ACTIVE_IDS.has(e.t));
+
+// Both clusters signal through both branches. Green (MAPK) dominates the left,
+// blue (PI3K) the right — but a few edges carry the *other* colour too (minority flow),
+// so dual-flow edges show a green + blue line side by side.
+const GREEN_INTO_B = new Set(['EGFR>PI3K','PI3K>AKT','mTOR>S6K']);   // green trickling into the PI3K/blue branch
+const BLUE_INTO_A  = new Set(['EGFR>GRB2','RAS>RAF','MEK>ERK']);     // blue trickling into the MAPK/green branch
+const ekey = e => e.f + '>' + e.t;
+VEDGES.forEach(e => {
+  const k = ekey(e);
+  e.g = (e.role === 'A' || e.role === 'both' || GREEN_INTO_B.has(k));  // carries green flow
+  e.b = (e.role === 'B' || e.role === 'both' || BLUE_INTO_A.has(k));   // carries blue flow
+  e.dual = e.g && e.b;
+  e.minG = e.g && e.role === 'B';   // green is the minority (subordinate) flow here
+  e.minB = e.b && e.role === 'A';   // blue is the minority flow here
+});
 
 function gn(id) { return NODES.find(n => n.id === id); }
 // map node coords into the network band that sits below the header/badges
@@ -586,16 +600,17 @@ function np(n) { return {x: nx(n), y: ny(n)}; }
 function rr(x,y,w,h,rad){ctx_rr(x,y,w,h,rad);}
 function ctx_rr(x,y,w,h,r){cx.beginPath();cx.moveTo(x+r,y);cx.arcTo(x+w,y,x+w,y+h,r);cx.arcTo(x+w,y+h,x,y+h,r);cx.arcTo(x,y+h,x,y,r);cx.arcTo(x,y,x+w,y,r);cx.closePath();}
 
-function mkStreams(roles, spd, col) {
-  return VEDGES.filter(e => roles.includes(e.role)).map(e => ({
-    e, col,
-    parts: [Math.random(), (Math.random() * 0.4 + 0.5) % 1].map(t => ({t})),
-    spd: spd * (0.82 + Math.random() * 0.36),
-  }));
+function mkStream(e, col, spd, off, minority) {
+  const n = minority ? 1 : 2, parts = [];
+  for (let i = 0; i < n; i++) parts.push({t: i ? (Math.random()*0.4+0.5)%1 : Math.random()});
+  return { e, col, off, mult: minority ? 0.5 : 1, parts, spd: spd * (0.82 + Math.random()*0.36) };
 }
-const sA = mkStreams(['A','both'], 0.0048, '61,255,160');
-const sB = mkStreams(['B','both'], 0.0042, '91,156,246');
-const sC = mkStreams(['cross'],    0.003,  '155,109,255');
+const sG = [], sB = [], sC = [];   // sG=green pulses, sB=blue pulses, sC=cross (purple)
+VEDGES.forEach(e => {
+  if (e.g) sG.push(mkStream(e, '61,255,160', 0.0048, e.dual ? -1 : 0, e.minG));
+  if (e.b) sB.push(mkStream(e, '91,156,246', 0.0042, e.dual ?  1 : 0, e.minB));
+  if (e.role === 'cross') sC.push(mkStream(e, '155,109,255', 0.003, 0, false));
+});
 const glow = {};
 NODES.forEach(n => { glow[n.id] = {g:0,b:0,p:0}; });
 
@@ -629,48 +644,62 @@ function drawHeaders(alpha) {
   cx.font = '600 13px "JetBrains Mono",monospace'; cx.fillStyle = 'rgba(61,255,160,0.9)';
   cx.fillText('CLUSTER A', BADGE[0].x*w + 30, ly - 6);
   cx.font = '400 10.5px "Inter",sans-serif'; cx.fillStyle = 'rgba(120,200,170,0.6)';
-  cx.fillText('MAPK / ERK cascade', BADGE[0].x*w + 30, ly + 10);
+  cx.fillText('MAPK branch', BADGE[0].x*w + 30, ly + 10);
   cx.textAlign = 'right';
   cx.font = '600 13px "JetBrains Mono",monospace'; cx.fillStyle = 'rgba(91,156,246,0.9)';
   cx.fillText('CLUSTER B', BADGE[1].x*w - 30, ry - 6);
   cx.font = '400 10.5px "Inter",sans-serif'; cx.fillStyle = 'rgba(130,170,220,0.6)';
-  cx.fillText('PI3K / AKT axis', BADGE[1].x*w - 30, ry + 10);
+  cx.fillText('PI3K / AKT branch', BADGE[1].x*w - 30, ry + 10);
   cx.globalAlpha = 1;
 }
 
 function drawEdges(alpha) {
   cx.globalAlpha = alpha;
+  const D = Math.max(3, W()*0.004);                       // perpendicular offset for dual (side-by-side) edges
+  const G = a => `rgba(61,255,160,${a})`, B = a => `rgba(91,156,246,${a})`;
+  const seg = (sx,sy,ex,ey,ux_,uy_,px,py,o,color,lw,aw) => {
+    const s1x=sx+px*o, s1y=sy+py*o, e1x=ex+px*o, e1y=ey+py*o;
+    cx.beginPath(); cx.moveTo(s1x,s1y); cx.lineTo(e1x,e1y);
+    cx.strokeStyle=color; cx.lineWidth=lw; cx.stroke();
+    cx.beginPath(); cx.moveTo(e1x,e1y);
+    cx.lineTo(e1x-uy_*aw-ux_*7, e1y+ux_*aw-uy_*7);
+    cx.lineTo(e1x+uy_*aw-ux_*7, e1y-ux_*aw-uy_*7);
+    cx.closePath(); cx.fillStyle=color; cx.fill();
+  };
   VEDGES.forEach(e => {
     const a = gn(e.f), b = gn(e.t);
     const pa = np(a), pb = np(b);
     const dx = pb.x-pa.x, dy = pb.y-pa.y;
     const len = Math.sqrt(dx*dx+dy*dy) || 1;
-    const ux_ = dx/len, uy_ = dy/len;
+    const ux_ = dx/len, uy_ = dy/len, px = -uy_, py = ux_;
     const sx = pa.x + ux_*a.r, sy = pa.y + uy_*a.r;
     const ex = pb.x - ux_*b.r, ey = pb.y - uy_*b.r;
-    const colMap = {A:'rgba(61,255,160,.16)',B:'rgba(91,156,246,.16)',
-                    both:'rgba(150,230,200,.13)',cross:'rgba(155,109,255,.15)'};
-    cx.beginPath(); cx.moveTo(sx,sy); cx.lineTo(ex,ey);
-    cx.strokeStyle = colMap[e.role] || 'rgba(255,255,255,.08)';
-    cx.lineWidth = 1.2; cx.stroke();
-    const aw = 4;
-    cx.beginPath(); cx.moveTo(ex,ey);
-    cx.lineTo(ex-uy_*aw-ux_*6, ey+ux_*aw-uy_*6);
-    cx.lineTo(ex+uy_*aw-ux_*6, ey-ux_*aw-uy_*6);
-    cx.closePath(); cx.fillStyle = colMap[e.role]; cx.fill();
+    const lw = 1.9, aw = 5;                               // thicker edges + bigger arrowheads
+    if (e.dual) {                                          // two flows: green + blue side by side
+      seg(sx,sy,ex,ey,ux_,uy_,px,py,-D, G(e.minG?0.13:0.24), lw, aw);
+      seg(sx,sy,ex,ey,ux_,uy_,px,py, D, B(e.minB?0.13:0.24), lw, aw);
+    } else if (e.g) {
+      seg(sx,sy,ex,ey,ux_,uy_,px,py,0, G(0.24), lw, aw);
+    } else if (e.b) {
+      seg(sx,sy,ex,ey,ux_,uy_,px,py,0, B(0.24), lw, aw);
+    } else {
+      seg(sx,sy,ex,ey,ux_,uy_,px,py,0, e.role==='cross'?'rgba(155,109,255,.22)':'rgba(255,255,255,.1)', lw, aw);
+    }
   });
   cx.globalAlpha = 1;
 }
 
 function drawStreams(streams, alpha) {
+  const D = Math.max(3, W()*0.004);
   streams.forEach(s => {
     const a = gn(s.e.f), b = gn(s.e.t);
     const pa = np(a), pb = np(b);
     const dx = pb.x-pa.x, dy = pb.y-pa.y;
     const len = Math.sqrt(dx*dx+dy*dy) || 1;
-    const ux_ = dx/len, uy_ = dy/len;
-    const ax = pa.x+ux_*a.r, ay = pa.y+uy_*a.r;
-    const bx = pb.x-ux_*b.r, by = pb.y-uy_*b.r;
+    const ux_ = dx/len, uy_ = dy/len, px = -uy_, py = ux_;
+    const o = (s.off||0)*D, mult = s.mult||1;             // side-by-side offset + minority dimming
+    const ax = pa.x+ux_*a.r+px*o, ay = pa.y+uy_*a.r+py*o;
+    const bx = pb.x-ux_*b.r+px*o, by = pb.y-uy_*b.r+py*o;
     const ex = bx-ax, ey = by-ay;
     const key = s.col === '61,255,160' ? 'g' : s.col === '91,156,246' ? 'b' : 'p';
     s.parts.forEach(p => {
@@ -678,8 +707,8 @@ function drawStreams(streams, alpha) {
       const tail = 0.55, head = p.t, t0 = Math.max(0, head - tail);
       const hx = ax+ex*head, hy = ay+ey*head;
       const tx = ax+ex*t0,   ty = ay+ey*t0;
-      const edgeFade = Math.min(1, head/0.12) * Math.min(1, (1-head)/0.12 + 0.15) * alpha;
-      for (const [w, al] of [[9,0.05],[4.5,0.13],[1.8,0.85]]) {
+      const edgeFade = Math.min(1, head/0.12) * Math.min(1, (1-head)/0.12 + 0.15) * alpha * mult;
+      for (const [w, al] of [[10,0.05],[5,0.14],[2.2,0.9]]) {
         const g = cx.createLinearGradient(tx,ty,hx,hy);
         g.addColorStop(0,   `rgba(${s.col},0)`);
         g.addColorStop(0.7, `rgba(${s.col},${al*0.3*edgeFade})`);
@@ -804,7 +833,7 @@ function frame() {
     drawTerritories(netProg);
     drawEdges(netProg);
     cx.globalCompositeOperation = 'lighter'; cx.globalAlpha = netProg;
-    drawStreams(sA, 1); drawStreams(sB, 1); drawStreams(sC, 1);
+    drawStreams(sG, 1); drawStreams(sB, 1); drawStreams(sC, 1);
     cx.globalAlpha = 1; cx.globalCompositeOperation = 'source-over';
     drawNodes(netProg);
   }
