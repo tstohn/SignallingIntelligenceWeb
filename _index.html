@@ -708,7 +708,7 @@ function drawStreams(streams, alpha) {
       const hx = ax+ex*head, hy = ay+ey*head;
       const tx = ax+ex*t0,   ty = ay+ey*t0;
       const edgeFade = Math.min(1, head/0.12) * Math.min(1, (1-head)/0.12 + 0.15) * alpha * mult;
-      for (const [w, al] of [[10,0.05],[5,0.14],[2.2,0.9]]) {
+      for (const [w, al] of [[30,0.05],[15,0.14],[7,0.9]]) {
         const g = cx.createLinearGradient(tx,ty,hx,hy);
         g.addColorStop(0,   `rgba(${s.col},0)`);
         g.addColorStop(0.7, `rgba(${s.col},${al*0.3*edgeFade})`);
