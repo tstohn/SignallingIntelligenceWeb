@@ -115,6 +115,11 @@ h1{font-size:clamp(1.7rem,4vw,2.9rem);font-weight:300;line-height:1.14;letter-sp
 h1 b{font-weight:500;color:var(--green)}
 .lead{font-size:1rem;color:var(--faint);line-height:1.85;max-width:600px;margin-top:1.4rem}
 .lead b{color:var(--white);font-weight:500}
+.why-list{display:flex;flex-direction:column;gap:1.1rem;max-width:600px;margin-top:2rem;text-align:left}
+.why-item{display:flex;gap:.9rem;align-items:flex-start;font-size:.9rem;color:var(--faint);line-height:1.75}
+.why-item b{color:var(--white);font-weight:500}
+.why-n{font-family:var(--mono);font-size:11px;color:var(--green);border:1px solid rgba(61,255,160,.3);border-radius:50%;
+       width:22px;height:22px;flex-shrink:0;display:flex;align-items:center;justify-content:center;margin-top:.15rem}
 .stay{font-family:var(--mono);font-size:12.5px;letter-spacing:.03em;color:var(--muted);margin-top:1.6rem}
 .stay b{color:var(--green);font-weight:500}
 .email{display:inline-block;font-family:var(--mono);font-size:13px;color:var(--green);text-decoration:none;
@@ -125,18 +130,19 @@ h1 b{font-weight:500;color:var(--green)}
 .foot em{font-style:normal;color:var(--green)}
 
 /* staggered fade-up for the text, timed to land after the logo reveal */
-.name,.pill,h1,.lead,.stay,.email,.foot{opacity:0;transform:translateY(10px);animation:fadeUp .7s ease forwards}
+.name,.pill,h1,.lead,.why-list,.stay,.email,.foot{opacity:0;transform:translateY(10px);animation:fadeUp .7s ease forwards}
 .name{animation-delay:1.5s}
 .pill{animation-delay:2.2s}
 h1{animation-delay:2.4s}
 .lead{animation-delay:2.7s}
-.stay{animation-delay:3.0s}
-.email{animation-delay:3.2s}
-.foot{animation-delay:3.4s}
+.why-list{animation-delay:2.9s}
+.stay{animation-delay:3.2s}
+.email{animation-delay:3.4s}
+.foot{animation-delay:3.6s}
 @keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
 
 @media(prefers-reduced-motion:reduce){
-  .intro-logo,.logo-white,.flowmask,.cpu-green,.name,.pill,h1,.lead,.stay,.email,.foot{
+  .intro-logo,.logo-white,.flowmask,.cpu-green,.name,.pill,h1,.lead,.why-list,.stay,.email,.foot{
     opacity:1;transform:none;animation:none}
   .flowmask{stroke-dashoffset:0}
   .cpu-green{opacity:.88}
@@ -208,14 +214,21 @@ h1{animation-delay:2.4s}
 
   <div class="name">Signalling<em>Intelligence</em></div>
   <div class="pill">Coming soon</div>
-  <h1> Biology is no average - explainable cell-state conditioned biological models. 
-    We combine <b>AI and mechanistic modelling</b> to build biological networks from your data and quantify cell-specific treatment effects.</h1>
+  <h1>
+    We combine <b>AI and mechanistic modelling</b> to build biological networks from your data and quantify cell-specific treatment effects.
+    Biology is no average - we help you build explainable cell-state conditioned biological models. 
+  </h1>
   <p class="lead">We help to turn your single-cell (phospho)-protein data into actionable insight on how drug-treatments effect signalling networks and cell-fate &mdash; <b> resolving signalling at the single-cell level</b>. 
   We model signalling pathways conditioned on the state of individual cells/ patients to better explain and predict
   outcome of treatment strategies. Our platform combines mechanistic modelling of pathways from (single-cell) protein data and 
   existing knowledge of signalling pathways to train AI models to predict how various cell-states/ types or patients responde to treatment.
   Our platform does not treat signalling pathways as a black-box, but provides actionable insight into the signalling dynamics that govern treatment response.
   </p>
+  <div class="why-list">
+    <div class="why-item"><span class="why-n">01</span><div><b>Not a black box.</b> We start from prior knowledge of signalling networks and refine it with data-driven edges &mdash; using our own single-cell network reconstruction methods to explain differences between cell states with interpretable, mechanistic structure.</div></div>
+    <div class="why-item"><span class="why-n">02</span><div><b>One model across the full cell-state continuum.</b> We train an AI model jointly across the entire continuum of cell states in your single-cell dataset to predict how cells in each individual state respond to drug treatment.</div></div>
+    <div class="why-item"><span class="why-n">03</span><div><b>Human in the loop.</b> Bring your own knowledge of interactions and their strengths into the model, then scan the single-cell space yourself with our software &mdash; inspecting how signalling changes across it and how drug treatment shifts signalling in the states you pick.</div></div>
+  </div>
   <p class="stay">The full platform is on its way. <b>Stay tuned.</b></p>
   <a class="email" href="mailto:info@signallingintelligence.com">info@signallingintelligence.com</a>
   <div class="foot">&copy; 2026 Signalling<em>Intelligence</em> &middot; Tim Stohn &middot; Leiden</div>
